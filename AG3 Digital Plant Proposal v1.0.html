@@ -1,0 +1,745 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.1">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="ms" class="scroll-smooth"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;AG3 | Platform Digital Berpusat / Centralised Digital Platform&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Chosen Palette: Slate Blue &amp; Warm Gray neutrals with subtle Gold/Red accents --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Application Structure Plan: Linear scrolling "pitch-deck" SPA. Now enhanced with a custom Vanilla JS i18n (internationalization) engine using data-en and data-ms attributes to seamlessly toggle between English and Malay without reloading the page. --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. --&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.chart-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 600px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-left: auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-right: auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 300px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-height: 400px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@media (min-width: 768px) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.chart-container {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>height: 350px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.fade-in {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animation: fadeIn 0.5s ease-in-out;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes fadeIn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>from { opacity: 0; transform: translateY(10px); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>to { opacity: 1; transform: translateY(0); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.code-block {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Courier New', Courier, monospace;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="bg-slate-50 text-slate-800 font-sans antialiased"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;nav class="fixed w-full bg-white/90 backdrop-blur-sm border-b border-slate-200 z-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex justify-between h-16 items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex-shrink-0 flex items-center gap-2 font-bold text-2xl text-blue-800"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-3xl"&gt;&amp;#9632;&lt;/span&gt; AG3</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="hidden lg:flex space-x-6 items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#context" class="nav-link text-slate-600 hover:text-blue-600 px-2 py-2 text-sm font-medium transition-colors" data-en="Context" data-ms="Konteks"&gt;Konteks&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#components" class="nav-link text-slate-600 hover:text-blue-600 px-2 py-2 text-sm font-medium transition-colors" data-en="Components" data-ms="Komponen"&gt;Komponen&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#value" class="nav-link text-slate-600 hover:text-blue-600 px-2 py-2 text-sm font-medium transition-colors" data-en="Value Add" data-ms="Nilai Tambah"&gt;Nilai Tambah&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#operations" class="nav-link text-slate-600 hover:text-blue-600 px-2 py-2 text-sm font-medium transition-colors" data-en="Operations" data-ms="Operasi"&gt;Operasi&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#ai-demo" class="nav-link hover:text-blue-600 px-2 py-2 text-sm font-bold transition-colors text-blue-600" data-en="AI Demo ✨" data-ms="Demo AI ✨"&gt;Demo AI ✨&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#roadmap" class="nav-link text-slate-600 hover:text-blue-600 px-2 py-2 text-sm font-medium transition-colors" data-en="Roadmap" data-ms="Hala Tuju"&gt;Hala Tuju&lt;/a&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Language Toggle Button --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button id="langToggle" onclick="toggleLanguage()" class="ml-4 flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-colors font-bold text-xs uppercase tracking-wider"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&amp;#127103; English</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/nav&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;header class="pt-32 pb-20 px-4 bg-gradient-to-br from-slate-900 to-blue-900 text-white border-b-4 border-blue-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-5xl mx-auto text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-blue-300 font-semibold tracking-wider uppercase mb-4 text-sm" data-en="Submission Date: 26 April 2026" data-ms="Tarikh Serahan: 26 April 2026"&gt;Tarikh Serahan: 26 April 2026&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6" data-en="Centralised Digital Platform for Plant Inspection" data-ms="Platform Digital Berpusat untuk Pemeriksaan Loji"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>Platform Digital Berpusat untuk Pemeriksaan Loji</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-xl md:text-2xl text-slate-300 mb-10 max-w-3xl mx-auto font-light" data-en="Transforming plant inspection delivery and Certificate of Fitness (CF) administration through a unified national digital ecosystem." data-ms="Mentransformasikan penyampaian pemeriksaan loji dan pentadbiran Perakuan Kelayakan (CF) melalui ekosistem digital nasional yang disatukan."&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>Mentransformasikan penyampaian pemeriksaan loji dan pentadbiran Perakuan Kelayakan (CF) melalui ekosistem digital nasional yang disatukan.</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="inline-block bg-white/10 rounded-full px-6 py-2 text-sm text-blue-200 border border-white/20" data-en="Submitted to the Department of Occupational Safety and Health (DOSH)" data-ms="Dikemukakan kepada Jabatan Keselamatan dan Kesihatan Pekerjaan (DOSH)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>Dikemukakan kepada Jabatan Keselamatan dan Kesihatan Pekerjaan (DOSH)</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Context Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="context" class="py-16 border-b border-slate-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="text-center max-w-3xl mx-auto mb-12"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-3xl font-bold text-slate-900 mb-4" data-en="Context &amp; Rationale" data-ms="Konteks &amp; Rasional"&gt;Konteks &amp; Rasional&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-slate-600 text-lg" data-en="Building a transparent, efficient, and highly standardised national inspection regime requires addressing current systemic bottlenecks." data-ms="Membina rejim pemeriksaan nasional yang telus, cekap, dan sangat terpiawai memerlukan penyelesaian kepada kesesakan sistemik semasa."&gt;Membina rejim pemeriksaan nasional yang telus, cekap, dan sangat terpiawai memerlukan penyelesaian kepada kesesakan sistemik semasa.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-2 overflow-hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex border-b border-slate-200" id="context-tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="w-1/2 py-4 text-center font-semibold text-slate-800 bg-slate-100 transition-colors" data-target="challenges" data-en="Current Challenges" data-ms="Cabaran Semasa"&gt;Cabaran Semasa&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="w-1/2 py-4 text-center font-semibold text-slate-500 hover:text-slate-800 transition-colors" data-target="mandate" data-en="Strategic Mandate" data-ms="Mandat Strategik"&gt;Mandat Strategik&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="p-8" id="context-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="challenges" class="fade-in grid grid-cols-1 md:grid-cols-3 gap-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-red-50 p-6 rounded-xl border border-red-100"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="text-3xl mb-4"&gt;&amp;#9888;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="font-bold text-slate-900 mb-2" data-en="Fragmented Scheduling" data-ms="Penjadualan Terpecah"&gt;Penjadualan Terpecah&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;ul class="text-slate-600 text-sm space-y-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;&amp;#8226; &lt;span data-en="Delays securing qualified inspectors" data-ms="Kelewatan mendapatkan pemeriksa berkelayakan"&gt;Kelewatan mendapatkan pemeriksa berkelayakan&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;&amp;#8226; &lt;span data-en="Manual scheduling bottlenecks" data-ms="Kesesakan penjadualan manual"&gt;Kesesakan penjadualan manual&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;&amp;#8226; &lt;span data-en="Poor workload visibility" data-ms="Keterlihatan beban kerja yang lemah"&gt;Keterlihatan beban kerja yang lemah&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-red-50 p-6 rounded-xl border border-red-100"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="text-3xl mb-4"&gt;&amp;#128193;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="font-bold text-slate-900 mb-2" data-en="Inconsistent Process" data-ms="Proses Tidak Konsisten"&gt;Proses Tidak Konsisten&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;ul class="text-slate-600 text-sm space-y-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;&amp;#8226; &lt;span data-en="Disparate record management" data-ms="Pengurusan rekod yang tidak seragam"&gt;Pengurusan rekod yang tidak seragam&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;&amp;#8226; &lt;span data-en="Difficult scale-based verification" data-ms="Pengesahan berasaskan skala yang sukar"&gt;Pengesahan berasaskan skala yang sukar&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;&amp;#8226; &lt;span data-en="High risk of documentation gaps" data-ms="Risiko tinggi jurang dokumentasi"&gt;Risiko tinggi jurang dokumentasi&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-red-50 p-6 rounded-xl border border-red-100"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="text-3xl mb-4"&gt;&amp;#128200;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="font-bold text-slate-900 mb-2" data-en="Limited Data Oversight" data-ms="Pemantauan Data Terhad"&gt;Pemantauan Data Terhad&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;ul class="text-slate-600 text-sm space-y-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;&amp;#8226; &lt;span data-en="No national view of trends" data-ms="Tiada pandangan trend peringkat nasional"&gt;Tiada pandangan trend peringkat nasional&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;&amp;#8226; &lt;span data-en="Inability to plan resourcing" data-ms="Ketidakmampuan merancang pembahagian sumber"&gt;Ketidakmampuan merancang pembahagian sumber&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;&amp;#8226; &lt;span data-en="Reduced evidence-based policy" data-ms="Dasar berasaskan bukti yang berkurangan"&gt;Dasar berasaskan bukti yang berkurangan&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="mandate" class="hidden fade-in grid grid-cols-1 md:grid-cols-4 gap-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="text-center p-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="text-4xl text-blue-600 mb-3"&gt;&amp;#9201;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="font-bold text-slate-900" data-en="Efficient Scheduling" data-ms="Penjadualan Cekap"&gt;Penjadualan Cekap&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="text-center p-6 border-l border-slate-100"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="text-4xl text-blue-600 mb-3"&gt;&amp;#128104;&amp;#8205;&amp;#128187;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="font-bold text-slate-900" data-en="Qualified PJB Matching" data-ms="Padanan PJB Berkelayakan"&gt;Padanan PJB Berkelayakan&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="text-center p-6 border-l border-slate-100"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="text-4xl text-blue-600 mb-3"&gt;&amp;#9881;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="font-bold text-slate-900" data-en="Standardised Workflow" data-ms="Aliran Kerja Standard"&gt;Aliran Kerja Standard&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="text-center p-6 border-l border-slate-100"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="text-4xl text-blue-600 mb-3"&gt;&amp;#128065;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="font-bold text-slate-900" data-en="Transparent Oversight" data-ms="Pemantauan Telus"&gt;Pemantauan Telus&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Components Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="components" class="py-16 border-b border-slate-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="text-center max-w-3xl mx-auto mb-12"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-3xl font-bold text-slate-900 mb-4" data-en="Key Components" data-ms="Komponen Utama"&gt;Komponen Utama&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-slate-600 text-lg" data-en="A single-window architecture connecting users, regulators and external systems to one national inspection record." data-ms="Seni bina tetingkap tunggal yang menghubungkan pengguna, pengawal selia dan sistem luaran kepada satu rekod pemeriksaan nasional."&gt;Seni bina tetingkap tunggal yang menghubungkan pengguna, pengawal selia dan sistem luaran kepada satu rekod pemeriksaan nasional.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex flex-col md:flex-row gap-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-full md:w-1/3 flex flex-col gap-2" id="component-nav"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="text-left px-6 py-4 rounded-xl font-bold bg-blue-600 text-white shadow-md transition-all" data-comp="c1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span data-en="1. Smart Scheduling" data-ms="1. Penjadualan Pintar"&gt;1. Penjadualan Pintar&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="text-left px-6 py-4 rounded-xl font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all" data-comp="c2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span data-en="2. PJB Registry" data-ms="2. Pendaftaran PJB"&gt;2. Pendaftaran PJB&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="text-left px-6 py-4 rounded-xl font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all" data-comp="c3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span data-en="3. Inspection Workflow" data-ms="3. Aliran Kerja Pemeriksaan"&gt;3. Aliran Kerja Pemeriksaan&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="text-left px-6 py-4 rounded-xl font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all" data-comp="c4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span data-en="4. Monitoring Dashboards" data-ms="4. Papan Pemuka Pemantauan"&gt;4. Papan Pemuka Pemantauan&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="text-left px-6 py-4 rounded-xl font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all" data-comp="c5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span data-en="5. Digital Registry" data-ms="5. Pendaftaran Digital"&gt;5. Pendaftaran Digital&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-full md:w-2/3 bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex items-center" id="component-display"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Dynamic Component Display --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Value Add Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="value" class="py-16 border-b border-slate-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="text-center max-w-3xl mx-auto mb-12"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-3xl font-bold text-slate-900 mb-4" data-en="Strategic Benefits &amp; Value Add" data-ms="Faedah Strategik &amp; Nilai Tambah"&gt;Faedah Strategik &amp; Nilai Tambah&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-slate-600 text-lg" data-en="Transitioning from fragmented administration to a strategic digital infrastructure ensures robust regulatory excellence and operational productivity." data-ms="Peralihan daripada pentadbiran terpecah kepada infrastruktur digital strategik memastikan kecemerlangan kawal selia dan produktiviti operasi yang mantap."&gt;Peralihan daripada pentadbiran terpecah kepada infrastruktur digital strategik memastikan kecemerlangan kawal selia dan produktiviti operasi yang mantap.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="grid grid-cols-1 lg:grid-cols-3 gap-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-blue-50/50 rounded-2xl p-8 border border-blue-100 hover:shadow-lg transition-shadow"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="w-12 h-12 bg-blue-600 rounded-lg text-white flex items-center justify-center text-2xl mb-6"&gt;&amp;#127963;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-bold text-slate-900 mb-4" data-en="For DOSH &amp; Ministry" data-ms="Untuk DOSH &amp; Kementerian"&gt;Untuk DOSH &amp; Kementerian&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ul class="space-y-3 text-slate-700 text-sm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li class="flex items-start gap-2"&gt;&lt;span class="text-blue-600"&gt;&amp;#10003;&lt;/span&gt; &lt;span data-en="&lt;strong&gt;Live Oversight:&lt;/strong&gt; National view of inspections &amp; CFs." data-ms="&lt;strong&gt;Pemantauan Langsung:&lt;/strong&gt; Pandangan nasional pemeriksaan &amp; CF."&gt;&lt;strong&gt;Pemantauan Langsung:&lt;/strong&gt; Pandangan nasional pemeriksaan &amp; CF.&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li class="flex items-start gap-2"&gt;&lt;span class="text-blue-600"&gt;&amp;#10003;&lt;/span&gt; &lt;span data-en="&lt;strong&gt;Regulatory Excellence:&lt;/strong&gt; Evidence-based policy data." data-ms="&lt;strong&gt;Kecemerlangan Kawal Selia:&lt;/strong&gt; Data dasar berasaskan bukti."&gt;&lt;strong&gt;Kecemerlangan Kawal Selia:&lt;/strong&gt; Data dasar berasaskan bukti.&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li class="flex items-start gap-2"&gt;&lt;span class="text-blue-600"&gt;&amp;#10003;&lt;/span&gt; &lt;span data-en="&lt;strong&gt;Compliance:&lt;/strong&gt; Automated alerts &amp; audit trails." data-ms="&lt;strong&gt;Pematuhan:&lt;/strong&gt; Makluman automatik &amp; jejak audit."&gt;&lt;strong&gt;Pematuhan:&lt;/strong&gt; Makluman automatik &amp; jejak audit.&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li class="flex items-start gap-2"&gt;&lt;span class="text-blue-600"&gt;&amp;#10003;&lt;/span&gt; &lt;span data-en="&lt;strong&gt;Efficiency:&lt;/strong&gt; Reduced administrative overhead." data-ms="&lt;strong&gt;Kecekapan:&lt;/strong&gt; Pengurangan beban pentadbiran."&gt;&lt;strong&gt;Kecekapan:&lt;/strong&gt; Pengurangan beban pentadbiran.&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-blue-50/50 rounded-2xl p-8 border border-blue-100 hover:shadow-lg transition-shadow"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="w-12 h-12 bg-slate-800 rounded-lg text-white flex items-center justify-center text-2xl mb-6"&gt;&amp;#127970;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-bold text-slate-900 mb-4" data-en="For Owners &amp; Occupiers" data-ms="Untuk Pemilik &amp; Penghuni"&gt;Untuk Pemilik &amp; Penghuni&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ul class="space-y-3 text-slate-700 text-sm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li class="flex items-start gap-2"&gt;&lt;span class="text-blue-600"&gt;&amp;#10003;&lt;/span&gt; &lt;span data-en="&lt;strong&gt;Operational Efficiency:&lt;/strong&gt; Faster scheduling, less downtime." data-ms="&lt;strong&gt;Kecekapan Operasi:&lt;/strong&gt; Penjadualan pantas, kurang masa henti."&gt;&lt;strong&gt;Kecekapan Operasi:&lt;/strong&gt; Penjadualan pantas, kurang masa henti.&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li class="flex items-start gap-2"&gt;&lt;span class="text-blue-600"&gt;&amp;#10003;&lt;/span&gt; &lt;span data-en="&lt;strong&gt;Transparency:&lt;/strong&gt; Visible PJB selection &amp; fee tracking." data-ms="&lt;strong&gt;Ketelusan:&lt;/strong&gt; Pemilihan PJB boleh dilihat &amp; penjejakan fi."&gt;&lt;strong&gt;Ketelusan:&lt;/strong&gt; Pemilihan PJB boleh dilihat &amp; penjejakan fi.&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li class="flex items-start gap-2"&gt;&lt;span class="text-blue-600"&gt;&amp;#10003;&lt;/span&gt; &lt;span data-en="&lt;strong&gt;Flexibility:&lt;/strong&gt; Expedited/after-hours service options." data-ms="&lt;strong&gt;Fleksibiliti:&lt;/strong&gt; Pilihan perkhidmatan segera/selepas waktu bekerja."&gt;&lt;strong&gt;Fleksibiliti:&lt;/strong&gt; Pilihan perkhidmatan segera/selepas waktu bekerja.&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li class="flex items-start gap-2"&gt;&lt;span class="text-blue-600"&gt;&amp;#10003;&lt;/span&gt; &lt;span data-en="&lt;strong&gt;Centralised:&lt;/strong&gt; History &amp; CF records in one portal." data-ms="&lt;strong&gt;Berpusat:&lt;/strong&gt; Rekod sejarah &amp; CF dalam satu portal."&gt;&lt;strong&gt;Berpusat:&lt;/strong&gt; Rekod sejarah &amp; CF dalam satu portal.&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-blue-50/50 rounded-2xl p-8 border border-blue-100 hover:shadow-lg transition-shadow"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="w-12 h-12 bg-amber-500 rounded-lg text-white flex items-center justify-center text-2xl mb-6"&gt;&amp;#9874;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-bold text-slate-900 mb-4" data-en="For PJBs &amp; Industry" data-ms="Untuk PJB &amp; Industri"&gt;Untuk PJB &amp; Industri&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ul class="space-y-3 text-slate-700 text-sm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li class="flex items-start gap-2"&gt;&lt;span class="text-blue-600"&gt;&amp;#10003;&lt;/span&gt; &lt;span data-en="&lt;strong&gt;Safety &amp; Development:&lt;/strong&gt; Pathway for new talent." data-ms="&lt;strong&gt;Keselamatan &amp; Pembangunan:&lt;/strong&gt; Laluan untuk bakat baharu."&gt;&lt;strong&gt;Keselamatan &amp; Pembangunan:&lt;/strong&gt; Laluan untuk bakat baharu.&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li class="flex items-start gap-2"&gt;&lt;span class="text-blue-600"&gt;&amp;#10003;&lt;/span&gt; &lt;span data-en="&lt;strong&gt;Fair Access:&lt;/strong&gt; Merit-based assignment system." data-ms="&lt;strong&gt;Akses Adil:&lt;/strong&gt; Sistem penugasan berasaskan merit."&gt;&lt;strong&gt;Akses Adil:&lt;/strong&gt; Sistem penugasan berasaskan merit.&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li class="flex items-start gap-2"&gt;&lt;span class="text-blue-600"&gt;&amp;#10003;&lt;/span&gt; &lt;span data-en="&lt;strong&gt;Focus:&lt;/strong&gt; Less admin, more time on technical work." data-ms="&lt;strong&gt;Fokus:&lt;/strong&gt; Kurang kerja admin, lebih fokus teknikal."&gt;&lt;strong&gt;Fokus:&lt;/strong&gt; Kurang kerja admin, lebih fokus teknikal.&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li class="flex items-start gap-2"&gt;&lt;span class="text-blue-600"&gt;&amp;#10003;&lt;/span&gt; &lt;span data-en="&lt;strong&gt;Performance:&lt;/strong&gt; Clear feedback &amp; growth records." data-ms="&lt;strong&gt;Prestasi:&lt;/strong&gt; Maklum balas jelas &amp; rekod pertumbuhan."&gt;&lt;strong&gt;Prestasi:&lt;/strong&gt; Maklum balas jelas &amp; rekod pertumbuhan.&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Operations Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="operations" class="py-16 border-b border-slate-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="text-center max-w-3xl mx-auto mb-16"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-3xl font-bold text-slate-900 mb-4" data-en="Investment &amp; Operating Model" data-ms="Model Pelaburan &amp; Operasi"&gt;Model Pelaburan &amp; Operasi&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-slate-600 text-lg" data-en="A sustainable, self-funding national platform delivered in a 'Build-and-Operate' partnership with DOSH." data-ms="Platform nasional yang mampan, membiayai sendiri dan disampaikan dalam perkongsian 'Bina-dan-Kendalikan' dengan DOSH."&gt;Platform nasional yang mampan, membiayai sendiri dan disampaikan dalam perkongsian "Bina-dan-Kendalikan" dengan DOSH.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-2xl font-bold text-slate-900 mb-6" data-en="Self-Funding Revenue Model" data-ms="Model Hasil Membiayai Sendiri"&gt;Model Hasil Membiayai Sendiri&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-slate-600 mb-6" data-en="The platform operates without adding cost burden to the end-user. The platform fee is integrated seamlessly within the newly regulated and standardised inspection fee structure." data-ms="Platform ini beroperasi tanpa menambah beban kos kepada pengguna akhir. Fi platform disepadukan secara lancar dalam struktur fi pemeriksaan kawal selia standard yang baharu."&gt;Platform ini beroperasi tanpa menambah beban kos kepada pengguna akhir. Fi platform disepadukan secara lancar dalam struktur fi pemeriksaan kawal selia standard yang baharu.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="text-center font-semibold text-slate-700 mb-4" id="chartTitle" data-en="Hypothetical Fee Structure Breakdown" data-ms="Pecahan Struktur Fi Hipotetikal"&gt;Pecahan Struktur Fi Hipotetikal&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="chart-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;canvas id="feeChart"&gt;&lt;/canvas&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-xs text-center text-slate-400 mt-4" data-en="*Illustrative purposes only. Final model pending Ministry approval." data-ms="*Untuk tujuan ilustrasi sahaja. Model akhir tertakluk kepada kelulusan Kementerian."&gt;*Untuk tujuan ilustrasi sahaja. Model akhir tertakluk kepada kelulusan Kementerian.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-2xl font-bold text-slate-900 mb-6" data-en="End-to-End Process Flow" data-ms="Aliran Proses Hujung-ke-Hujung"&gt;Aliran Proses Hujung-ke-Hujung&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="relative border-l-2 border-blue-200 pl-6 space-y-8" id="process-stepper"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="relative cursor-pointer group" onclick="highlightStep(0)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="absolute -left-[35px] bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-white step-indicator transition-colors"&gt;1&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors" data-en="Request" data-ms="Permintaan"&gt;Permintaan&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 text-sm mt-1" data-en="Submission by plant owner/occupier via portal." data-ms="Penyerahan oleh pemilik/penghuni loji melalui portal."&gt;Penyerahan oleh pemilik/penghuni loji melalui portal.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="relative cursor-pointer group" onclick="highlightStep(1)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="absolute -left-[35px] bg-slate-300 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-white step-indicator transition-colors"&gt;2&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors" data-en="Match" data-ms="Padanan"&gt;Padanan&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 text-sm mt-1" data-en="Smart engine assigns a qualified PJB based on geo-location and competency." data-ms="Enjin pintar menetapkan PJB berkelayakan berdasarkan lokasi geo dan kompetensi."&gt;Enjin pintar menetapkan PJB berkelayakan berdasarkan lokasi geo dan kompetensi.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="relative cursor-pointer group" onclick="highlightStep(2)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="absolute -left-[35px] bg-slate-300 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-white step-indicator transition-colors"&gt;3&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors" data-en="Inspect" data-ms="Pemeriksaan"&gt;Pemeriksaan&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 text-sm mt-1" data-en="Conducted per DOSH SOPs using standardised digital modules." data-ms="Dijalankan mengikut SOP DOSH menggunakan modul digital standard."&gt;Dijalankan mengikut SOP DOSH menggunakan modul digital standard.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="relative cursor-pointer group" onclick="highlightStep(3)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="absolute -left-[35px] bg-slate-300 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-white step-indicator transition-colors"&gt;4&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors" data-en="Review" data-ms="Semakan"&gt;Semakan&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 text-sm mt-1" data-en="Straight-through DOSH workflow for CF application and fee payment." data-ms="Aliran kerja terus ke DOSH untuk permohonan CF dan pembayaran fi."&gt;Aliran kerja terus ke DOSH untuk permohonan CF dan pembayaran fi.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="relative cursor-pointer group" onclick="highlightStep(4)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="absolute -left-[35px] bg-slate-300 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-white step-indicator transition-colors"&gt;5&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors" data-en="Record" data-ms="Rekod"&gt;Rekod&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-slate-600 text-sm mt-1" data-en="Result securely stored in tamper-evident National CF Registry." data-ms="Keputusan disimpan dengan selamat dalam Pendaftaran CF Nasional kalis gangguan."&gt;Keputusan disimpan dengan selamat dalam Pendaftaran CF Nasional kalis gangguan.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-slate-800 rounded-2xl p-8 text-white"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-xl font-bold mb-4 flex items-center gap-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&amp;#9878; &lt;span data-en="Compliance &amp; Collaboration Framework" data-ms="Rangka Kerja Pematuhan &amp; Kolaborasi"&gt;Rangka Kerja Pematuhan &amp; Kolaborasi&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-slate-300 mb-6" data-en="A complement to—not a substitute for—the Government's regulatory authority." data-ms="Pelengkap kepada—bukan pengganti—pihak berkuasa kawal selia Kerajaan."&gt;Pelengkap kepada—bukan pengganti—pihak berkuasa kawal selia Kerajaan.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="border-l border-slate-600 pl-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;strong class="text-blue-400 block mb-1" data-en="Regulator-First Governance" data-ms="Tadbir Urus Pengawal Selia"&gt;Tadbir Urus Pengawal Selia&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-sm text-slate-400" data-en="DOSH retains system ownership for regulatory oversight. Ministry provides policy direction." data-ms="DOSH mengekalkan pemilikan sistem untuk pengawasan. Kementerian menyediakan hala tuju dasar."&gt;DOSH mengekalkan pemilikan sistem untuk pengawasan. Kementerian menyediakan hala tuju dasar.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="border-l border-slate-600 pl-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;strong class="text-blue-400 block mb-1" data-en="Legal Alignment" data-ms="Penjajaran Undang-undang"&gt;Penjajaran Undang-undang&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-sm text-slate-400" data-en="Full compliance with OSH Act, data protection, and public procurement requirements." data-ms="Pematuhan penuh dengan Akta KKP, perlindungan data, dan keperluan perolehan awam."&gt;Pematuhan penuh dengan Akta KKP, perlindungan data, dan keperluan perolehan awam.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="border-l border-slate-600 pl-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;strong class="text-blue-400 block mb-1" data-en="Full Transparency" data-ms="Ketelusan Penuh"&gt;Ketelusan Penuh&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-sm text-slate-400" data-en="Independent audits, whistleblower channels, and real-time dashboard alerts." data-ms="Audit bebas, saluran pemberi maklumat, dan makluman papan pemuka masa nyata."&gt;Audit bebas, saluran pemberi maklumat, dan makluman papan pemuka masa nyata.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- AI Demo Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="ai-demo" class="py-16 border-b border-slate-200 bg-blue-50/30"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="text-center max-w-3xl mx-auto mb-12"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold tracking-wider mb-3" data-en="POWERED BY GEMINI AI" data-ms="DIKUASAKAN OLEH GEMINI AI"&gt;DIKUASAKAN OLEH GEMINI AI&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-3xl font-bold text-slate-900 mb-4" data-en="Interactive System Capabilities" data-ms="Keupayaan Sistem Interaktif"&gt;Keupayaan Sistem Interaktif&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-slate-600 text-lg" data-en="Experience how the AG3 platform leverages advanced Language Models to streamline administrative workflows and intelligently process inspection requests." data-ms="Alami bagaimana platform AG3 memanfaatkan Model Bahasa Lanjutan (LLM) untuk menyelaraskan aliran kerja pentadbiran dan memproses permintaan pemeriksaan secara pintar."&gt;Alami bagaimana platform AG3 memanfaatkan Model Bahasa Lanjutan (LLM) untuk menyelaraskan aliran kerja pentadbiran dan memproses permintaan pemeriksaan secara pintar.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden max-w-5xl mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex border-b border-slate-200 bg-slate-50" id="ai-tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="w-1/2 py-4 text-center font-bold text-blue-700 border-b-2 border-blue-600 transition-colors" data-target="ai-summary"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span data-en="Proposal Tailoring Assistant" data-ms="Pembantu Penyesuaian Cadangan"&gt;Pembantu Penyesuaian Cadangan&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="w-1/2 py-4 text-center font-semibold text-slate-500 hover:text-slate-800 transition-colors" data-target="ai-simulator"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span data-en="Smart Match Simulator" data-ms="Simulator Padanan Pintar"&gt;Simulator Padanan Pintar&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="p-8 min-h-[350px]"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Tab 1: Tailored Summary --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="ai-summary" class="fade-in"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-xl font-bold text-slate-800 mb-2" data-en="Generate a Tailored Executive Summary" data-ms="Jana Ringkasan Eksekutif Tersuai"&gt;Jana Ringkasan Eksekutif Tersuai&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-sm text-slate-500 mb-6" data-en="Select your stakeholder role to see a customized breakdown of the AG3 platform's value proposition." data-ms="Pilih peranan pihak berkepentingan anda untuk melihat pecahan proposisi nilai platform AG3 yang disesuaikan."&gt;Pilih peranan pihak berkepentingan anda untuk melihat pecahan proposisi nilai platform AG3 yang disesuaikan.&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                        </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex flex-col md:flex-row gap-4 mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;select id="role-select" class="flex-grow p-3 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-700"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;!-- Options will be populated by JS --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;button id="btn-summary" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-sm transition-colors whitespace-nowrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span data-en="✨ Generate Summary" data-ms="✨ Jana Ringkasan"&gt;✨ Jana Ringkasan&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                        </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-slate-50 border border-slate-200 rounded-xl p-6 relative"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="absolute top-0 right-0 p-3 opacity-20 text-4xl"&gt;&amp;#10077;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="summary-output" class="text-slate-700 leading-relaxed min-h-[100px]"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;em data-en="Select a role and click generate to see the AI-tailored summary here." data-ms="Pilih peranan dan klik jana untuk melihat ringkasan AI yang disesuaikan di sini."&gt;Pilih peranan dan klik jana untuk melihat ringkasan AI yang disesuaikan di sini.&lt;/em&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Tab 2: Smart Match Simulator --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="ai-simulator" class="hidden fade-in"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-xl font-bold text-slate-800 mb-2" data-en="Smart Match Engine Parsing" data-ms="Penghuraian Enjin Padanan Pintar"&gt;Penghuraian Enjin Padanan Pintar&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-sm text-slate-500 mb-6" data-en="Type a hypothetical, unstructured inspection request. The AI will parse it into structured data to simulate how the system matches the right PJB." data-ms="Taip permintaan pemeriksaan hipotetikal yang tidak berstruktur. AI akan menghuraikannya kepada data berstruktur untuk mensimulasikan bagaimana sistem memadankan PJB yang betul."&gt;Taip permintaan pemeriksaan hipotetikal yang tidak berstruktur. AI akan menghuraikannya kepada data berstruktur untuk mensimulasikan bagaimana sistem memadankan PJB yang betul.&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                        </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex flex-col gap-4 mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;textarea id="sim-input" rows="3" class="w-full p-4 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-700 placeholder-slate-400"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;button id="btn-sim" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 px-8 rounded-lg shadow-sm transition-colors self-end"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span data-en="✨ Simulate AI Parsing" data-ms="✨ Simulasikan Penghuraian AI"&gt;✨ Simulasikan Penghuraian AI&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                        </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-slate-900 rounded-xl p-6 relative overflow-hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="text-xs text-slate-400 mb-2 font-mono border-b border-slate-700 pb-2"&gt;JSON OUTPUT_STREAM&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="sim-output" class="code-block text-green-400 text-sm leading-relaxed min-h-[120px] whitespace-pre-wrap overflow-x-auto"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Roadmap Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="roadmap" class="py-16"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="text-center max-w-3xl mx-auto mb-16"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-3xl font-bold text-slate-900 mb-4" data-en="Way Forward" data-ms="Hala Tuju"&gt;Hala Tuju&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-slate-600 text-lg" data-en="AG3's strategic roadmap for accelerating DOSH's digital transformation." data-ms="Pelan hala tuju strategik AG3 untuk mempercepatkan transformasi digital DOSH."&gt;Pelan hala tuju strategik AG3 untuk mempercepatkan transformasi digital DOSH.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="max-w-4xl mx-auto mb-16"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex flex-col md:flex-row justify-between items-start md:items-center relative"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-slate-200 -z-10 transform -translate-y-1/2"&gt;&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm w-full md:w-[30%] mb-4 md:mb-0 relative"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold absolute -top-4 left-1/2 transform -translate-x-1/2 ring-4 ring-white"&gt;1&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="text-center font-bold text-slate-900 mt-2 mb-1" data-en="Phase 1: Alignment" data-ms="Fasa 1: Penjajaran"&gt;Fasa 1: Penjajaran&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-center text-xs text-blue-600 font-semibold mb-2" data-en="Months 1 - 2" data-ms="Bulan 1 - 2"&gt;Bulan 1 - 2&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-xs text-slate-600 text-center" data-en="Requirement gathering, Ministry workshops, scope agreement, and integration planning." data-ms="Pengumpulan keperluan, bengkel Kementerian, persetujuan skop, dan perancangan integrasi."&gt;Pengumpulan keperluan, bengkel Kementerian, persetujuan skop, dan perancangan integrasi.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm w-full md:w-[30%] mb-4 md:mb-0 relative"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="w-8 h-8 bg-slate-300 text-slate-700 rounded-full flex items-center justify-center font-bold absolute -top-4 left-1/2 transform -translate-x-1/2 ring-4 ring-white"&gt;2&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="text-center font-bold text-slate-900 mt-2 mb-1" data-en="Phase 2: Pilot" data-ms="Fasa 2: Perintis"&gt;Fasa 2: Perintis&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-center text-xs text-slate-500 font-semibold mb-2" data-en="Months 3 - 5" data-ms="Bulan 3 - 5"&gt;Bulan 3 - 5&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-xs text-slate-600 text-center" data-en="Core platform development, select PJB onboarding, and regional pilot deployment." data-ms="Pembangunan platform teras, pendaftaran PJB terpilih, dan pelaksanaan perintis serantau."&gt;Pembangunan platform teras, pendaftaran PJB terpilih, dan pelaksanaan perintis serantau.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm w-full md:w-[30%] relative"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="w-8 h-8 bg-slate-300 text-slate-700 rounded-full flex items-center justify-center font-bold absolute -top-4 left-1/2 transform -translate-x-1/2 ring-4 ring-white"&gt;3&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="text-center font-bold text-slate-900 mt-2 mb-1" data-en="Phase 3: Rollout" data-ms="Fasa 3: Pelaksanaan Penuh"&gt;Fasa 3: Pelaksanaan Penuh&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-center text-xs text-slate-500 font-semibold mb-2" data-en="Month 6 onwards" data-ms="Bulan 6 dan seterusnya"&gt;Bulan 6 dan seterusnya&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-xs text-slate-600 text-center" data-en="Nationwide rollout, full integration, analytics activation, and continuous operations." data-ms="Pelaksanaan seluruh negara, integrasi penuh, pengaktifan analitik, dan operasi berterusan."&gt;Pelaksanaan seluruh negara, integrasi penuh, pengaktifan analitik, dan operasi berterusan.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-blue-600 text-white rounded-3xl p-10 text-center max-w-4xl mx-auto shadow-xl"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-3xl font-bold mb-4" data-en="Ready to Transform Plant Inspection?" data-ms="Bersedia untuk Mentransformasikan Pemeriksaan Loji?"&gt;Bersedia untuk Mentransformasikan Pemeriksaan Loji?&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-blue-100 mb-8 max-w-2xl mx-auto" data-en="AG3 believes a centralised digital platform is the catalyst for enhancing industrial productivity and workplace safety nationwide. We welcome the opportunity for a detailed technical discussion." data-ms="AG3 percaya platform digital berpusat adalah pemangkin untuk meningkatkan produktiviti perindustrian dan keselamatan tempat kerja di seluruh negara. Kami mengalu-alukan peluang untuk perbincangan teknikal yang terperinci."&gt;AG3 percaya platform digital berpusat adalah pemangkin untuk meningkatkan produktiviti perindustrian dan keselamatan tempat kerja di seluruh negara. Kami mengalu-alukan peluang untuk perbincangan teknikal yang terperinci.&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex flex-col md:flex-row justify-center items-center gap-6 text-sm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex items-center gap-2 bg-blue-700 px-6 py-3 rounded-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;&amp;#128222;&lt;/span&gt; +603 – 8800 7000</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex items-center gap-2 bg-blue-700 px-6 py-3 rounded-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;&amp;#128231;&lt;/span&gt; hello@ag3.com.my</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex items-center gap-2 bg-blue-700 px-6 py-3 rounded-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;&amp;#127760;&lt;/span&gt; www.ag3.com.my</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-blue-300 text-xs mt-8 opacity-70"&gt;AG3 Sdn. Bhd. | 05-05-02, Block 5, Corporate Park, Star Central, Lingkaran Cyber Point Timur, Cyber 12, 63000 Cyberjaya, Selangor&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p data-en="Proprietary &amp; Confidential. Unauthorized copying &amp; distribution is strictly prohibited. &amp;copy; 2026 AG3 Sdn. Bhd." data-ms="Hak Cipta Terpelihara &amp; Sulit. Penyalinan &amp; pengedaran tanpa kebenaran dilarang sama sekali. &amp;copy; 2026 AG3 Sdn. Bhd."&gt;Hak Cipta Terpelihara &amp; Sulit. Penyalinan &amp; pengedaran tanpa kebenaran dilarang sama sekali. &amp;copy; 2026 AG3 Sdn. Bhd.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// === GLOBAL LANGUAGE STATE &amp; TOGGLE LOGIC ===</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentLang = 'ms'; // Default language</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let feeChartInstance = null; // Reference to ChartJS</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function toggleLanguage() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentLang = currentLang === 'ms' ? 'en' : 'ms';</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 1. Update the toggle button text itself</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('langToggle').innerHTML = currentLang === 'ms'<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>? '&amp;#127103; English'<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>: '&amp;#127103; Bahasa Melayu';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 2. Update all static HTML elements with data-en / data-ms attributes</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('[data-en]').forEach(el =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>el.innerHTML = el.getAttribute(`data-${currentLang}`);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 3. Update the dynamic Component Display text</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const activeCompBtn = document.querySelector('#component-nav button.bg-blue-600');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (activeCompBtn) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateComponentDisplay(activeCompBtn.getAttribute('data-comp'));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 4. Update Dropdown Options (AI Roles)</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const roleSelect = document.getElementById('role-select');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentLang === 'en') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>roleSelect.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option value="DOSH Director General"&gt;DOSH Director General&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option value="Ministry Finance Officer"&gt;Ministry Finance Officer&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option value="Plant Owner / Occupier"&gt;Plant Owner / Occupier&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option value="Registered PJB Inspector"&gt;Registered PJB Inspector&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>roleSelect.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option value="Ketua Pengarah DOSH"&gt;Ketua Pengarah DOSH&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option value="Pegawai Kewangan Kementerian"&gt;Pegawai Kewangan Kementerian&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option value="Pemilik / Penghuni Loji"&gt;Pemilik / Penghuni Loji&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option value="Pemeriksa PJB Berdaftar"&gt;Pemeriksa PJB Berdaftar&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 5. Update Textarea Placeholder &amp; Empty Output</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const simInput = document.getElementById('sim-input');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const simOutput = document.getElementById('sim-output');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentLang === 'en') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>simInput.placeholder = "e.g., We have a critical high-pressure boiler at our Shah Alam facility that needs an urgent inspection by this Friday due to an upcoming audit.";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if(!simOutput.innerHTML.includes('{')) simOutput.innerHTML = "// Awaiting user input to simulate routing logic...";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>simInput.placeholder = "cth., Kami mempunyai dandang tekanan tinggi kritikal di kemudahan Shah Alam kami yang memerlukan pemeriksaan segera menjelang Jumaat ini kerana audit yang akan datang.";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if(!simOutput.innerHTML.includes('{')) simOutput.innerHTML = "// Menunggu input pengguna untuk mensimulasikan logik laluan...";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 6. Update ChartJS Labels</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (feeChartInstance) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feeChartInstance.data.labels = currentLang === 'en'<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>? ['PJB Professional Services', 'DOSH Regulatory Fee', 'AG3 Platform Admin Fee']<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>: ['Perkhidmatan Profesional PJB', 'Fi Kawal Selia DOSH', 'Fi Pentadbiran Platform AG3'];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feeChartInstance.update();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// === COMPONENT SECTION DATA (BILINGUAL) ===</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const componentData = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>c1: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>icon: "&amp;#9201;",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>en: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: "Smart Scheduling Engine",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>points: ["Intelligent matching with qualified PJBs", "Geo-based assignment &amp; priority queuing", "Automated conflict resolution"],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>goalLabel: "Goal:", goal: "Minimise delays and optimise inspection capacity."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>ms: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: "Enjin Penjadualan Pintar",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>points: ["Padanan pintar dengan PJB berkelayakan", "Penugasan berasaskan geo &amp; baris gilir keutamaan", "Penyelesaian konflik automatik"],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>goalLabel: "Matlamat:", goal: "Mengurangkan kelewatan dan mengoptimumkan kapasiti pemeriksaan."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>c2: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>icon: "&amp;#128100;",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>en: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: "PJB Registry &amp; Competency",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>points: ["Qualifications &amp; experience central registry", "Continuous performance tracking", "Transparent access for inspectors"],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>goalLabel: "Goal:", goal: "Ensure only compliant PJBs perform inspections."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>ms: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: "Pendaftaran &amp; Kompetensi PJB",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>points: ["Pendaftaran pusat kelayakan &amp; pengalaman", "Penjejakan prestasi berterusan", "Akses telus untuk pemeriksa"],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>goalLabel: "Matlamat:", goal: "Memastikan hanya PJB yang mematuhi syarat melakukan pemeriksaan."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>c3: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>icon: "&amp;#9881;",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>en: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: "Inspection Workflow &amp; QA",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>points: ["Standardised digital assessment modules", "Digital report &amp; CF submissions", "Integrated DOSH fee payments"],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>goalLabel: "Goal:", goal: "Consistent, auditable outcomes nationwide."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>ms: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: "Aliran Kerja Pemeriksaan &amp; QA",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>points: ["Modul penilaian digital standard", "Penyerahan laporan &amp; CF digital", "Pembayaran fi DOSH bersepadu"],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>goalLabel: "Matlamat:", goal: "Hasil yang konsisten dan boleh diaudit di seluruh negara."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>c4: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>icon: "&amp;#128202;",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>en: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: "Monitoring Dashboards",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>points: ["Live inspection demand &amp; throughput view", "Automated alerts for non-compliance", "Exportable policy analytics"],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>goalLabel: "Goal:", goal: "Data-driven regulatory proactive enforcement."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>ms: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: "Papan Pemuka Pemantauan",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>points: ["Pandangan langsung permintaan &amp; pemprosesan pemeriksaan", "Makluman automatik untuk ketidakpatuhan", "Analitik dasar yang boleh dieksport"],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>goalLabel: "Matlamat:", goal: "Penguatkuasaan proaktif kawal selia dipacu data."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>c5: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>icon: "&amp;#128190;",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>en: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: "Digital Records Registry",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>points: ["Tamper-evident repository of all reports", "Verifiable access for owners &amp; insurers", "Secure long-term regulatory retention"],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>goalLabel: "Goal:", goal: "Single source of truth for plant compliance."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>ms: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: "Pendaftaran Rekod Digital",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>points: ["Repositori kalis gangguan untuk semua laporan", "Akses yang boleh disahkan untuk pemilik &amp; syarikat insurans", "Penyimpanan kawal selia jangka panjang yang selamat"],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>goalLabel: "Matlamat:", goal: "Sumber kebenaran tunggal untuk pematuhan loji."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// UI Interactions</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.querySelectorAll('a[href^="#"]').forEach(anchor =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>anchor.addEventListener('click', function (e) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const contextTabs = document.querySelectorAll('#context-tabs button');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>contextTabs.forEach(tab =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>tab.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>contextTabs.forEach(t =&gt; t.className = "w-1/2 py-4 text-center font-semibold text-slate-500 hover:text-slate-800 transition-colors");</p>
+<p class="p1"><span class="Apple-converted-space">                </span>tab.className = "w-1/2 py-4 text-center font-semibold text-slate-800 bg-slate-100 transition-colors";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const target = tab.getAttribute('data-target');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('challenges').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('mandate').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById(target).classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const aiTabs = document.querySelectorAll('#ai-tabs button');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>aiTabs.forEach(tab =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>tab.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>aiTabs.forEach(t =&gt; t.className = "w-1/2 py-4 text-center font-semibold text-slate-500 hover:text-slate-800 transition-colors");</p>
+<p class="p1"><span class="Apple-converted-space">                </span>tab.className = "w-1/2 py-4 text-center font-bold text-blue-700 border-b-2 border-blue-600 transition-colors";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const target = tab.getAttribute('data-target');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('ai-summary').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('ai-simulator').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById(target).classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const compBtns = document.querySelectorAll('#component-nav button');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const compDisplay = document.getElementById('component-display');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateComponentDisplay(key) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const data = componentData[key][currentLang];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const icon = componentData[key].icon;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>compDisplay.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="fade-in w-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-5xl text-blue-600 mb-4"&gt;${icon}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-2xl font-bold text-slate-900 mb-4"&gt;${data.title}&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ul class="space-y-3 mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>${data.points.map(p =&gt; `&lt;li class="flex items-center gap-2 text-slate-700"&gt;&lt;span class="text-green-500"&gt;&amp;#10003;&lt;/span&gt; ${p}&lt;/li&gt;`).join('')}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;strong class="text-slate-900"&gt;${data.goalLabel}&lt;/strong&gt; &lt;span class="text-slate-700"&gt;${data.goal}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>compBtns.forEach(btn =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>btn.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>compBtns.forEach(b =&gt; b.className = "text-left px-6 py-4 rounded-xl font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all");</p>
+<p class="p1"><span class="Apple-converted-space">                </span>btn.className = "text-left px-6 py-4 rounded-xl font-bold bg-blue-600 text-white shadow-md transition-all";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateComponentDisplay(btn.getAttribute('data-comp'));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function highlightStep(index) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.step-indicator').forEach((ind, i) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>ind.className = i &lt;= index<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>? "absolute -left-[35px] bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-white step-indicator transition-colors"</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>: "absolute -left-[35px] bg-slate-300 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-white step-indicator transition-colors";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Initialize Defaults</p>
+<p class="p1"><span class="Apple-converted-space">        </span>updateComponentDisplay('c1');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('sim-output').innerHTML = "// Menunggu input pengguna untuk mensimulasikan logik laluan...";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('role-select').innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value="Ketua Pengarah DOSH"&gt;Ketua Pengarah DOSH&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value="Pegawai Kewangan Kementerian"&gt;Pegawai Kewangan Kementerian&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value="Pemilik / Penghuni Loji"&gt;Pemilik / Penghuni Loji&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;option value="Pemeriksa PJB Berdaftar"&gt;Pemeriksa PJB Berdaftar&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// === GEMINI API INTEGRATION (BILINGUAL) ===</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const apiKey = "";<span class="Apple-converted-space"> </span></p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>async function callGemini(promptText, isJson = false) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const payload = { contents: [{ parts: [{ text: promptText }] }] };</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (isJson) payload.generationConfig = { responseMimeType: "application/json" };</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let retries = 3, delay = 1000;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>while (retries &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const result = await response.json();</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>return result.candidates?.[0]?.content?.parts?.[0]?.text || "";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} catch (error) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>console.error("Gemini API Error:", error);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>retries--;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (retries === 0) throw error;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>await new Promise(resolve =&gt; setTimeout(resolve, delay));</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>delay *= 2;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('btn-summary').addEventListener('click', async () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const role = document.getElementById('role-select').value;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const outputEl = document.getElementById('summary-output');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const loadingTxt = currentLang === 'en' ? `Analyzing proposal context for ${role}...` : `Menganalisis konteks cadangan untuk ${role}...`;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>outputEl.innerHTML = `&lt;div class="animate-pulse flex space-x-2 items-center text-blue-600 font-semibold"&gt;&lt;div class="h-3 w-3 bg-blue-600 rounded-full"&gt;&lt;/div&gt;&lt;div class="h-3 w-3 bg-blue-600 rounded-full"&gt;&lt;/div&gt;&lt;div class="h-3 w-3 bg-blue-600 rounded-full"&gt;&lt;/div&gt;&lt;span&gt;${loadingTxt}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const promptLang = currentLang === 'en' ? 'IN ENGLISH' : 'IN MALAY';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const prompt = `You are presenting AG3's plant inspection proposal. Write a short, persuasive 2-paragraph executive summary ${promptLang} highlighting the value of this platform specifically for a ${role}. Keep it professional, impactful, and focus on relevant benefits (e.g. data oversight for DOSH, cost/downtime for owners, fair access for PJBs). Do not use markdown formatting like **bold** in the response. Ensure the response is completely in standard ${currentLang === 'en' ? 'English' : 'Malay'} language.`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const responseText = await callGemini(prompt, false);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>outputEl.innerHTML = `&lt;p class="fade-in"&gt;${responseText.replace(/\n\n/g, '&lt;/p&gt;&lt;p class="mt-4"&gt;')}&lt;/p&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} catch (e) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>outputEl.innerHTML = currentLang === 'en'<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>? `&lt;span class="text-red-500"&gt;Failed to generate summary. Please check your connection.&lt;/span&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>: `&lt;span class="text-red-500"&gt;Gagal menjana ringkasan. Sila periksa sambungan internet anda.&lt;/span&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('btn-sim').addEventListener('click', async () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const inputTxt = document.getElementById('sim-input').value;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const outputEl = document.getElementById('sim-output');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!inputTxt.trim()) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>outputEl.innerHTML = currentLang === 'en' ? "// Error: Please enter a request." : "// Ralat: Sila masukkan permintaan.";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const loadingTxt = currentLang === 'en' ? "// Parsing natural language to routing logic..." : "// Menghuraikan bahasa semula jadi kepada logik laluan...";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>outputEl.innerHTML = `&lt;div class="animate-pulse flex space-x-2"&gt;&lt;div class="h-3 w-3 bg-green-400 rounded-full"&gt;&lt;/div&gt;&lt;div class="h-3 w-3 bg-green-400 rounded-full"&gt;&lt;/div&gt;&lt;div class="h-3 w-3 bg-green-400 rounded-full"&gt;&lt;/div&gt;&lt;/div&gt; ${loadingTxt}`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const jsonInstruction = currentLang === 'en'<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>? 'The values inside the JSON MUST be in English language'<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>: 'The values inside the JSON MUST be in Malay language';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const prompt = `You are the AI routing engine for AG3's plant inspection platform. Analyze the following unstructured text submitted by a plant owner and convert it into structured routing data. User Request: "${inputTxt}". Respond ONLY with a valid JSON object matching this schema. ${jsonInstruction}:</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">              </span>"plant_type_identified": "string (e.g., Boiler / Dandang)",</p>
+<p class="p1"><span class="Apple-converted-space">              </span>"location_extracted": "string (city or region)",</p>
+<p class="p1"><span class="Apple-converted-space">              </span>"urgency_level": "string",</p>
+<p class="p1"><span class="Apple-converted-space">              </span>"required_inspector_competency": "string",</p>
+<p class="p1"><span class="Apple-converted-space">              </span>"system_action": "string (A brief 1-sentence description of how the system will route this)"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const responseText = await callGemini(prompt, true);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>outputEl.innerHTML = `&lt;pre class="fade-in"&gt;${JSON.stringify(JSON.parse(responseText), null, 2)}&lt;/pre&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} catch (e) {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>outputEl.innerHTML = `// Error:\n${responseText || "Failed to connect."}`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// === CHART.JS ===</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener("DOMContentLoaded", () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const ctx = document.getElementById('feeChart').getContext('2d');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>feeChartInstance = new Chart(ctx, {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'doughnut',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>data: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>labels: ['Perkhidmatan Profesional PJB', 'Fi Kawal Selia DOSH', 'Fi Pentadbiran Platform AG3'],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>datasets: [{</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>data: [75, 15, 10],<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>backgroundColor: ['#1e293b', '#3b82f6', '#f59e0b'],</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>borderWidth: 0, hoverOffset: 4</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}]</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>maintainAspectRatio: false,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>plugins: { legend: { position: 'bottom', labels: { padding: 20, font: { family: "'Inter', sans-serif" } } } },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>cutout: '65%'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
