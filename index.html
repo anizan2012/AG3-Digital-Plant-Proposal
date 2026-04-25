@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ms" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AG3 | Platform Digital Berpusat / Centralised Digital Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Chosen Palette: Slate Blue & Warm Gray neutrals with subtle Gold/Red accents -->
+    <!-- Application Structure Plan: Linear scrolling "pitch-deck" SPA. Now enhanced with a custom Vanilla JS i18n (internationalization) engine using data-en and data-ms attributes to seamlessly toggle between English and Malay without reloading the page. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .code-block {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm border-b border-slate-200 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2 font-bold text-2xl text-blue-800">
+                    <span class="text-3xl">&#9632;</span> AG3
+                </div>
+                <div class="hidden lg:flex space-x-6 items-center">
+                    <a href="#context" class="nav-link text-slate-600 hover:text-blue-600 px-2 py-2 text-sm font-medium transition-colors" data-en="Context" data-ms="Konteks">Konteks</a>
+                    <a href="#components" class="nav-link text-slate-600 hover:text-blue-600 px-2 py-2 text-sm font-medium transition-colors" data-en="Components" data-ms="Komponen">Komponen</a>
+                    <a href="#value" class="nav-link text-slate-600 hover:text-blue-600 px-2 py-2 text-sm font-medium transition-colors" data-en="Value Add" data-ms="Nilai Tambah">Nilai Tambah</a>
+                    <a href="#operations" class="nav-link text-slate-600 hover:text-blue-600 px-2 py-2 text-sm font-medium transition-colors" data-en="Operations" data-ms="Operasi">Operasi</a>
+                    <a href="#ai-demo" class="nav-link hover:text-blue-600 px-2 py-2 text-sm font-bold transition-colors text-blue-600" data-en="AI Demo ✨" data-ms="Demo AI ✨">Demo AI ✨</a>
+                    <a href="#roadmap" class="nav-link text-slate-600 hover:text-blue-600 px-2 py-2 text-sm font-medium transition-colors" data-en="Roadmap" data-ms="Hala Tuju">Hala Tuju</a>
+                    
+                    <!-- Language Toggle Button -->
+                    <button id="langToggle" onclick="toggleLanguage()" class="ml-4 flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-colors font-bold text-xs uppercase tracking-wider">
+                        &#127103; English
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-20 px-4 bg-gradient-to-br from-slate-900 to-blue-900 text-white border-b-4 border-blue-500">
+        <div class="max-w-5xl mx-auto text-center">
+            <p class="text-blue-300 font-semibold tracking-wider uppercase mb-4 text-sm" data-en="Submission Date: 26 April 2026" data-ms="Tarikh Serahan: 26 April 2026">Tarikh Serahan: 26 April 2026</p>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6" data-en="Centralised Digital Platform for Plant Inspection" data-ms="Platform Digital Berpusat untuk Pemeriksaan Loji">
+                Platform Digital Berpusat untuk Pemeriksaan Loji
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-300 mb-10 max-w-3xl mx-auto font-light" data-en="Transforming plant inspection delivery and Certificate of Fitness (CF) administration through a unified national digital ecosystem." data-ms="Mentransformasikan penyampaian pemeriksaan loji dan pentadbiran Perakuan Kelayakan (CF) melalui ekosistem digital nasional yang disatukan.">
+                Mentransformasikan penyampaian pemeriksaan loji dan pentadbiran Perakuan Kelayakan (CF) melalui ekosistem digital nasional yang disatukan.
+            </p>
+            <div class="inline-block bg-white/10 rounded-full px-6 py-2 text-sm text-blue-200 border border-white/20" data-en="Submitted to the Department of Occupational Safety and Health (DOSH)" data-ms="Dikemukakan kepada Jabatan Keselamatan dan Kesihatan Pekerjaan (DOSH)">
+                Dikemukakan kepada Jabatan Keselamatan dan Kesihatan Pekerjaan (DOSH)
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- Context Section -->
+        <section id="context" class="py-16 border-b border-slate-200">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4" data-en="Context & Rationale" data-ms="Konteks & Rasional">Konteks & Rasional</h2>
+                <p class="text-slate-600 text-lg" data-en="Building a transparent, efficient, and highly standardised national inspection regime requires addressing current systemic bottlenecks." data-ms="Membina rejim pemeriksaan nasional yang telus, cekap, dan sangat terpiawai memerlukan penyelesaian kepada kesesakan sistemik semasa.">Membina rejim pemeriksaan nasional yang telus, cekap, dan sangat terpiawai memerlukan penyelesaian kepada kesesakan sistemik semasa.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-2 overflow-hidden">
+                <div class="flex border-b border-slate-200" id="context-tabs">
+                    <button class="w-1/2 py-4 text-center font-semibold text-slate-800 bg-slate-100 transition-colors" data-target="challenges" data-en="Current Challenges" data-ms="Cabaran Semasa">Cabaran Semasa</button>
+                    <button class="w-1/2 py-4 text-center font-semibold text-slate-500 hover:text-slate-800 transition-colors" data-target="mandate" data-en="Strategic Mandate" data-ms="Mandat Strategik">Mandat Strategik</button>
+                </div>
+                
+                <div class="p-8" id="context-content">
+                    <div id="challenges" class="fade-in grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-red-50 p-6 rounded-xl border border-red-100">
+                            <div class="text-3xl mb-4">&#9888;</div>
+                            <h3 class="font-bold text-slate-900 mb-2" data-en="Fragmented Scheduling" data-ms="Penjadualan Terpecah">Penjadualan Terpecah</h3>
+                            <ul class="text-slate-600 text-sm space-y-2">
+                                <li>&#8226; <span data-en="Delays securing qualified inspectors" data-ms="Kelewatan mendapatkan pemeriksa berkelayakan">Kelewatan mendapatkan pemeriksa berkelayakan</span></li>
+                                <li>&#8226; <span data-en="Manual scheduling bottlenecks" data-ms="Kesesakan penjadualan manual">Kesesakan penjadualan manual</span></li>
+                                <li>&#8226; <span data-en="Poor workload visibility" data-ms="Keterlihatan beban kerja yang lemah">Keterlihatan beban kerja yang lemah</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-red-50 p-6 rounded-xl border border-red-100">
+                            <div class="text-3xl mb-4">&#128193;</div>
+                            <h3 class="font-bold text-slate-900 mb-2" data-en="Inconsistent Process" data-ms="Proses Tidak Konsisten">Proses Tidak Konsisten</h3>
+                            <ul class="text-slate-600 text-sm space-y-2">
+                                <li>&#8226; <span data-en="Disparate record management" data-ms="Pengurusan rekod yang tidak seragam">Pengurusan rekod yang tidak seragam</span></li>
+                                <li>&#8226; <span data-en="Difficult scale-based verification" data-ms="Pengesahan berasaskan skala yang sukar">Pengesahan berasaskan skala yang sukar</span></li>
+                                <li>&#8226; <span data-en="High risk of documentation gaps" data-ms="Risiko tinggi jurang dokumentasi">Risiko tinggi jurang dokumentasi</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-red-50 p-6 rounded-xl border border-red-100">
+                            <div class="text-3xl mb-4">&#128200;</div>
+                            <h3 class="font-bold text-slate-900 mb-2" data-en="Limited Data Oversight" data-ms="Pemantauan Data Terhad">Pemantauan Data Terhad</h3>
+                            <ul class="text-slate-600 text-sm space-y-2">
+                                <li>&#8226; <span data-en="No national view of trends" data-ms="Tiada pandangan trend peringkat nasional">Tiada pandangan trend peringkat nasional</span></li>
+                                <li>&#8226; <span data-en="Inability to plan resourcing" data-ms="Ketidakmampuan merancang pembahagian sumber">Ketidakmampuan merancang pembahagian sumber</span></li>
+                                <li>&#8226; <span data-en="Reduced evidence-based policy" data-ms="Dasar berasaskan bukti yang berkurangan">Dasar berasaskan bukti yang berkurangan</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="mandate" class="hidden fade-in grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div class="text-center p-6">
+                            <div class="text-4xl text-blue-600 mb-3">&#9201;</div>
+                            <h4 class="font-bold text-slate-900" data-en="Efficient Scheduling" data-ms="Penjadualan Cekap">Penjadualan Cekap</h4>
+                        </div>
+                        <div class="text-center p-6 border-l border-slate-100">
+                            <div class="text-4xl text-blue-600 mb-3">&#128104;&#8205;&#128187;</div>
+                            <h4 class="font-bold text-slate-900" data-en="Qualified PJB Matching" data-ms="Padanan PJB Berkelayakan">Padanan PJB Berkelayakan</h4>
+                        </div>
+                        <div class="text-center p-6 border-l border-slate-100">
+                            <div class="text-4xl text-blue-600 mb-3">&#9881;</div>
+                            <h4 class="font-bold text-slate-900" data-en="Standardised Workflow" data-ms="Aliran Kerja Standard">Aliran Kerja Standard</h4>
+                        </div>
+                        <div class="text-center p-6 border-l border-slate-100">
+                            <div class="text-4xl text-blue-600 mb-3">&#128065;</div>
+                            <h4 class="font-bold text-slate-900" data-en="Transparent Oversight" data-ms="Pemantauan Telus">Pemantauan Telus</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Components Section -->
+        <section id="components" class="py-16 border-b border-slate-200">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4" data-en="Key Components" data-ms="Komponen Utama">Komponen Utama</h2>
+                <p class="text-slate-600 text-lg" data-en="A single-window architecture connecting users, regulators and external systems to one national inspection record." data-ms="Seni bina tetingkap tunggal yang menghubungkan pengguna, pengawal selia dan sistem luaran kepada satu rekod pemeriksaan nasional.">Seni bina tetingkap tunggal yang menghubungkan pengguna, pengawal selia dan sistem luaran kepada satu rekod pemeriksaan nasional.</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="w-full md:w-1/3 flex flex-col gap-2" id="component-nav">
+                    <button class="text-left px-6 py-4 rounded-xl font-bold bg-blue-600 text-white shadow-md transition-all" data-comp="c1">
+                        <span data-en="1. Smart Scheduling" data-ms="1. Penjadualan Pintar">1. Penjadualan Pintar</span>
+                    </button>
+                    <button class="text-left px-6 py-4 rounded-xl font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all" data-comp="c2">
+                        <span data-en="2. PJB Registry" data-ms="2. Pendaftaran PJB">2. Pendaftaran PJB</span>
+                    </button>
+                    <button class="text-left px-6 py-4 rounded-xl font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all" data-comp="c3">
+                        <span data-en="3. Inspection Workflow" data-ms="3. Aliran Kerja Pemeriksaan">3. Aliran Kerja Pemeriksaan</span>
+                    </button>
+                    <button class="text-left px-6 py-4 rounded-xl font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all" data-comp="c4">
+                        <span data-en="4. Monitoring Dashboards" data-ms="4. Papan Pemuka Pemantauan">4. Papan Pemuka Pemantauan</span>
+                    </button>
+                    <button class="text-left px-6 py-4 rounded-xl font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all" data-comp="c5">
+                        <span data-en="5. Digital Registry" data-ms="5. Pendaftaran Digital">5. Pendaftaran Digital</span>
+                    </button>
+                </div>
+                
+                <div class="w-full md:w-2/3 bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex items-center" id="component-display">
+                    <!-- Dynamic Component Display -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Value Add Section -->
+        <section id="value" class="py-16 border-b border-slate-200">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4" data-en="Strategic Benefits & Value Add" data-ms="Faedah Strategik & Nilai Tambah">Faedah Strategik & Nilai Tambah</h2>
+                <p class="text-slate-600 text-lg" data-en="Transitioning from fragmented administration to a strategic digital infrastructure ensures robust regulatory excellence and operational productivity." data-ms="Peralihan daripada pentadbiran terpecah kepada infrastruktur digital strategik memastikan kecemerlangan kawal selia dan produktiviti operasi yang mantap.">Peralihan daripada pentadbiran terpecah kepada infrastruktur digital strategik memastikan kecemerlangan kawal selia dan produktiviti operasi yang mantap.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="bg-blue-50/50 rounded-2xl p-8 border border-blue-100 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-blue-600 rounded-lg text-white flex items-center justify-center text-2xl mb-6">&#127963;</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4" data-en="For DOSH & Ministry" data-ms="Untuk DOSH & Kementerian">Untuk DOSH & Kementerian</h3>
+                    <ul class="space-y-3 text-slate-700 text-sm">
+                        <li class="flex items-start gap-2"><span class="text-blue-600">&#10003;</span> <span data-en="<strong>Live Oversight:</strong> National view of inspections & CFs." data-ms="<strong>Pemantauan Langsung:</strong> Pandangan nasional pemeriksaan & CF."><strong>Pemantauan Langsung:</strong> Pandangan nasional pemeriksaan & CF.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-600">&#10003;</span> <span data-en="<strong>Regulatory Excellence:</strong> Evidence-based policy data." data-ms="<strong>Kecemerlangan Kawal Selia:</strong> Data dasar berasaskan bukti."><strong>Kecemerlangan Kawal Selia:</strong> Data dasar berasaskan bukti.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-600">&#10003;</span> <span data-en="<strong>Compliance:</strong> Automated alerts & audit trails." data-ms="<strong>Pematuhan:</strong> Makluman automatik & jejak audit."><strong>Pematuhan:</strong> Makluman automatik & jejak audit.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-600">&#10003;</span> <span data-en="<strong>Efficiency:</strong> Reduced administrative overhead." data-ms="<strong>Kecekapan:</strong> Pengurangan beban pentadbiran."><strong>Kecekapan:</strong> Pengurangan beban pentadbiran.</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-blue-50/50 rounded-2xl p-8 border border-blue-100 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-slate-800 rounded-lg text-white flex items-center justify-center text-2xl mb-6">&#127970;</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4" data-en="For Owners & Occupiers" data-ms="Untuk Pemilik & Penghuni">Untuk Pemilik & Penghuni</h3>
+                    <ul class="space-y-3 text-slate-700 text-sm">
+                        <li class="flex items-start gap-2"><span class="text-blue-600">&#10003;</span> <span data-en="<strong>Operational Efficiency:</strong> Faster scheduling, less downtime." data-ms="<strong>Kecekapan Operasi:</strong> Penjadualan pantas, kurang masa henti."><strong>Kecekapan Operasi:</strong> Penjadualan pantas, kurang masa henti.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-600">&#10003;</span> <span data-en="<strong>Transparency:</strong> Visible PJB selection & fee tracking." data-ms="<strong>Ketelusan:</strong> Pemilihan PJB boleh dilihat & penjejakan fi."><strong>Ketelusan:</strong> Pemilihan PJB boleh dilihat & penjejakan fi.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-600">&#10003;</span> <span data-en="<strong>Flexibility:</strong> Expedited/after-hours service options." data-ms="<strong>Fleksibiliti:</strong> Pilihan perkhidmatan segera/selepas waktu bekerja."><strong>Fleksibiliti:</strong> Pilihan perkhidmatan segera/selepas waktu bekerja.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-600">&#10003;</span> <span data-en="<strong>Centralised:</strong> History & CF records in one portal." data-ms="<strong>Berpusat:</strong> Rekod sejarah & CF dalam satu portal."><strong>Berpusat:</strong> Rekod sejarah & CF dalam satu portal.</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-blue-50/50 rounded-2xl p-8 border border-blue-100 hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-amber-500 rounded-lg text-white flex items-center justify-center text-2xl mb-6">&#9874;</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4" data-en="For PJBs & Industry" data-ms="Untuk PJB & Industri">Untuk PJB & Industri</h3>
+                    <ul class="space-y-3 text-slate-700 text-sm">
+                        <li class="flex items-start gap-2"><span class="text-blue-600">&#10003;</span> <span data-en="<strong>Safety & Development:</strong> Pathway for new talent." data-ms="<strong>Keselamatan & Pembangunan:</strong> Laluan untuk bakat baharu."><strong>Keselamatan & Pembangunan:</strong> Laluan untuk bakat baharu.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-600">&#10003;</span> <span data-en="<strong>Fair Access:</strong> Merit-based assignment system." data-ms="<strong>Akses Adil:</strong> Sistem penugasan berasaskan merit."><strong>Akses Adil:</strong> Sistem penugasan berasaskan merit.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-600">&#10003;</span> <span data-en="<strong>Focus:</strong> Less admin, more time on technical work." data-ms="<strong>Fokus:</strong> Kurang kerja admin, lebih fokus teknikal."><strong>Fokus:</strong> Kurang kerja admin, lebih fokus teknikal.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-blue-600">&#10003;</span> <span data-en="<strong>Performance:</strong> Clear feedback & growth records." data-ms="<strong>Prestasi:</strong> Maklum balas jelas & rekod pertumbuhan."><strong>Prestasi:</strong> Maklum balas jelas & rekod pertumbuhan.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Operations Section -->
+        <section id="operations" class="py-16 border-b border-slate-200">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4" data-en="Investment & Operating Model" data-ms="Model Pelaburan & Operasi">Model Pelaburan & Operasi</h2>
+                <p class="text-slate-600 text-lg" data-en="A sustainable, self-funding national platform delivered in a 'Build-and-Operate' partnership with DOSH." data-ms="Platform nasional yang mampan, membiayai sendiri dan disampaikan dalam perkongsian 'Bina-dan-Kendalikan' dengan DOSH.">Platform nasional yang mampan, membiayai sendiri dan disampaikan dalam perkongsian "Bina-dan-Kendalikan" dengan DOSH.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6" data-en="Self-Funding Revenue Model" data-ms="Model Hasil Membiayai Sendiri">Model Hasil Membiayai Sendiri</h3>
+                    <p class="text-slate-600 mb-6" data-en="The platform operates without adding cost burden to the end-user. The platform fee is integrated seamlessly within the newly regulated and standardised inspection fee structure." data-ms="Platform ini beroperasi tanpa menambah beban kos kepada pengguna akhir. Fi platform disepadukan secara lancar dalam struktur fi pemeriksaan kawal selia standard yang baharu.">Platform ini beroperasi tanpa menambah beban kos kepada pengguna akhir. Fi platform disepadukan secara lancar dalam struktur fi pemeriksaan kawal selia standard yang baharu.</p>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                        <h4 class="text-center font-semibold text-slate-700 mb-4" id="chartTitle" data-en="Hypothetical Fee Structure Breakdown" data-ms="Pecahan Struktur Fi Hipotetikal">Pecahan Struktur Fi Hipotetikal</h4>
+                        <div class="chart-container">
+                            <canvas id="feeChart"></canvas>
+                        </div>
+                        <p class="text-xs text-center text-slate-400 mt-4" data-en="*Illustrative purposes only. Final model pending Ministry approval." data-ms="*Untuk tujuan ilustrasi sahaja. Model akhir tertakluk kepada kelulusan Kementerian.">*Untuk tujuan ilustrasi sahaja. Model akhir tertakluk kepada kelulusan Kementerian.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6" data-en="End-to-End Process Flow" data-ms="Aliran Proses Hujung-ke-Hujung">Aliran Proses Hujung-ke-Hujung</h3>
+                    <div class="relative border-l-2 border-blue-200 pl-6 space-y-8" id="process-stepper">
+                        <div class="relative cursor-pointer group" onclick="highlightStep(0)">
+                            <div class="absolute -left-[35px] bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-white step-indicator transition-colors">1</div>
+                            <h4 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors" data-en="Request" data-ms="Permintaan">Permintaan</h4>
+                            <p class="text-slate-600 text-sm mt-1" data-en="Submission by plant owner/occupier via portal." data-ms="Penyerahan oleh pemilik/penghuni loji melalui portal.">Penyerahan oleh pemilik/penghuni loji melalui portal.</p>
+                        </div>
+                        <div class="relative cursor-pointer group" onclick="highlightStep(1)">
+                            <div class="absolute -left-[35px] bg-slate-300 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-white step-indicator transition-colors">2</div>
+                            <h4 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors" data-en="Match" data-ms="Padanan">Padanan</h4>
+                            <p class="text-slate-600 text-sm mt-1" data-en="Smart engine assigns a qualified PJB based on geo-location and competency." data-ms="Enjin pintar menetapkan PJB berkelayakan berdasarkan lokasi geo dan kompetensi.">Enjin pintar menetapkan PJB berkelayakan berdasarkan lokasi geo dan kompetensi.</p>
+                        </div>
+                        <div class="relative cursor-pointer group" onclick="highlightStep(2)">
+                            <div class="absolute -left-[35px] bg-slate-300 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-white step-indicator transition-colors">3</div>
+                            <h4 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors" data-en="Inspect" data-ms="Pemeriksaan">Pemeriksaan</h4>
+                            <p class="text-slate-600 text-sm mt-1" data-en="Conducted per DOSH SOPs using standardised digital modules." data-ms="Dijalankan mengikut SOP DOSH menggunakan modul digital standard.">Dijalankan mengikut SOP DOSH menggunakan modul digital standard.</p>
+                        </div>
+                        <div class="relative cursor-pointer group" onclick="highlightStep(3)">
+                            <div class="absolute -left-[35px] bg-slate-300 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-white step-indicator transition-colors">4</div>
+                            <h4 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors" data-en="Review" data-ms="Semakan">Semakan</h4>
+                            <p class="text-slate-600 text-sm mt-1" data-en="Straight-through DOSH workflow for CF application and fee payment." data-ms="Aliran kerja terus ke DOSH untuk permohonan CF dan pembayaran fi.">Aliran kerja terus ke DOSH untuk permohonan CF dan pembayaran fi.</p>
+                        </div>
+                        <div class="relative cursor-pointer group" onclick="highlightStep(4)">
+                            <div class="absolute -left-[35px] bg-slate-300 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-white step-indicator transition-colors">5</div>
+                            <h4 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors" data-en="Record" data-ms="Rekod">Rekod</h4>
+                            <p class="text-slate-600 text-sm mt-1" data-en="Result securely stored in tamper-evident National CF Registry." data-ms="Keputusan disimpan dengan selamat dalam Pendaftaran CF Nasional kalis gangguan.">Keputusan disimpan dengan selamat dalam Pendaftaran CF Nasional kalis gangguan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-800 rounded-2xl p-8 text-white">
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    &#9878; <span data-en="Compliance & Collaboration Framework" data-ms="Rangka Kerja Pematuhan & Kolaborasi">Rangka Kerja Pematuhan & Kolaborasi</span>
+                </h3>
+                <p class="text-slate-300 mb-6" data-en="A complement to—not a substitute for—the Government's regulatory authority." data-ms="Pelengkap kepada—bukan pengganti—pihak berkuasa kawal selia Kerajaan.">Pelengkap kepada—bukan pengganti—pihak berkuasa kawal selia Kerajaan.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="border-l border-slate-600 pl-4">
+                        <strong class="text-blue-400 block mb-1" data-en="Regulator-First Governance" data-ms="Tadbir Urus Pengawal Selia">Tadbir Urus Pengawal Selia</strong>
+                        <span class="text-sm text-slate-400" data-en="DOSH retains system ownership for regulatory oversight. Ministry provides policy direction." data-ms="DOSH mengekalkan pemilikan sistem untuk pengawasan. Kementerian menyediakan hala tuju dasar.">DOSH mengekalkan pemilikan sistem untuk pengawasan. Kementerian menyediakan hala tuju dasar.</span>
+                    </div>
+                    <div class="border-l border-slate-600 pl-4">
+                        <strong class="text-blue-400 block mb-1" data-en="Legal Alignment" data-ms="Penjajaran Undang-undang">Penjajaran Undang-undang</strong>
+                        <span class="text-sm text-slate-400" data-en="Full compliance with OSH Act, data protection, and public procurement requirements." data-ms="Pematuhan penuh dengan Akta KKP, perlindungan data, dan keperluan perolehan awam.">Pematuhan penuh dengan Akta KKP, perlindungan data, dan keperluan perolehan awam.</span>
+                    </div>
+                    <div class="border-l border-slate-600 pl-4">
+                        <strong class="text-blue-400 block mb-1" data-en="Full Transparency" data-ms="Ketelusan Penuh">Ketelusan Penuh</strong>
+                        <span class="text-sm text-slate-400" data-en="Independent audits, whistleblower channels, and real-time dashboard alerts." data-ms="Audit bebas, saluran pemberi maklumat, dan makluman papan pemuka masa nyata.">Audit bebas, saluran pemberi maklumat, dan makluman papan pemuka masa nyata.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Demo Section -->
+        <section id="ai-demo" class="py-16 border-b border-slate-200 bg-blue-50/30">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold tracking-wider mb-3" data-en="POWERED BY GEMINI AI" data-ms="DIKUASAKAN OLEH GEMINI AI">DIKUASAKAN OLEH GEMINI AI</div>
+                <h2 class="text-3xl font-bold text-slate-900 mb-4" data-en="Interactive System Capabilities" data-ms="Keupayaan Sistem Interaktif">Keupayaan Sistem Interaktif</h2>
+                <p class="text-slate-600 text-lg" data-en="Experience how the AG3 platform leverages advanced Language Models to streamline administrative workflows and intelligently process inspection requests." data-ms="Alami bagaimana platform AG3 memanfaatkan Model Bahasa Lanjutan (LLM) untuk menyelaraskan aliran kerja pentadbiran dan memproses permintaan pemeriksaan secara pintar.">Alami bagaimana platform AG3 memanfaatkan Model Bahasa Lanjutan (LLM) untuk menyelaraskan aliran kerja pentadbiran dan memproses permintaan pemeriksaan secara pintar.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden max-w-5xl mx-auto">
+                <div class="flex border-b border-slate-200 bg-slate-50" id="ai-tabs">
+                    <button class="w-1/2 py-4 text-center font-bold text-blue-700 border-b-2 border-blue-600 transition-colors" data-target="ai-summary">
+                        <span data-en="Proposal Tailoring Assistant" data-ms="Pembantu Penyesuaian Cadangan">Pembantu Penyesuaian Cadangan</span>
+                    </button>
+                    <button class="w-1/2 py-4 text-center font-semibold text-slate-500 hover:text-slate-800 transition-colors" data-target="ai-simulator">
+                        <span data-en="Smart Match Simulator" data-ms="Simulator Padanan Pintar">Simulator Padanan Pintar</span>
+                    </button>
+                </div>
+                
+                <div class="p-8 min-h-[350px]">
+                    <!-- Tab 1: Tailored Summary -->
+                    <div id="ai-summary" class="fade-in">
+                        <h3 class="text-xl font-bold text-slate-800 mb-2" data-en="Generate a Tailored Executive Summary" data-ms="Jana Ringkasan Eksekutif Tersuai">Jana Ringkasan Eksekutif Tersuai</h3>
+                        <p class="text-sm text-slate-500 mb-6" data-en="Select your stakeholder role to see a customized breakdown of the AG3 platform's value proposition." data-ms="Pilih peranan pihak berkepentingan anda untuk melihat pecahan proposisi nilai platform AG3 yang disesuaikan.">Pilih peranan pihak berkepentingan anda untuk melihat pecahan proposisi nilai platform AG3 yang disesuaikan.</p>
+                        
+                        <div class="flex flex-col md:flex-row gap-4 mb-6">
+                            <select id="role-select" class="flex-grow p-3 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-700">
+                                <!-- Options will be populated by JS -->
+                            </select>
+                            <button id="btn-summary" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-sm transition-colors whitespace-nowrap">
+                                <span data-en="✨ Generate Summary" data-ms="✨ Jana Ringkasan">✨ Jana Ringkasan</span>
+                            </button>
+                        </div>
+                        
+                        <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 relative">
+                            <div class="absolute top-0 right-0 p-3 opacity-20 text-4xl">&#10077;</div>
+                            <div id="summary-output" class="text-slate-700 leading-relaxed min-h-[100px]">
+                                <em data-en="Select a role and click generate to see the AI-tailored summary here." data-ms="Pilih peranan dan klik jana untuk melihat ringkasan AI yang disesuaikan di sini.">Pilih peranan dan klik jana untuk melihat ringkasan AI yang disesuaikan di sini.</em>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Smart Match Simulator -->
+                    <div id="ai-simulator" class="hidden fade-in">
+                        <h3 class="text-xl font-bold text-slate-800 mb-2" data-en="Smart Match Engine Parsing" data-ms="Penghuraian Enjin Padanan Pintar">Penghuraian Enjin Padanan Pintar</h3>
+                        <p class="text-sm text-slate-500 mb-6" data-en="Type a hypothetical, unstructured inspection request. The AI will parse it into structured data to simulate how the system matches the right PJB." data-ms="Taip permintaan pemeriksaan hipotetikal yang tidak berstruktur. AI akan menghuraikannya kepada data berstruktur untuk mensimulasikan bagaimana sistem memadankan PJB yang betul.">Taip permintaan pemeriksaan hipotetikal yang tidak berstruktur. AI akan menghuraikannya kepada data berstruktur untuk mensimulasikan bagaimana sistem memadankan PJB yang betul.</p>
+                        
+                        <div class="flex flex-col gap-4 mb-6">
+                            <textarea id="sim-input" rows="3" class="w-full p-4 border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-700 placeholder-slate-400"></textarea>
+                            <button id="btn-sim" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 px-8 rounded-lg shadow-sm transition-colors self-end">
+                                <span data-en="✨ Simulate AI Parsing" data-ms="✨ Simulasikan Penghuraian AI">✨ Simulasikan Penghuraian AI</span>
+                            </button>
+                        </div>
+                        
+                        <div class="bg-slate-900 rounded-xl p-6 relative overflow-hidden">
+                            <div class="text-xs text-slate-400 mb-2 font-mono border-b border-slate-700 pb-2">JSON OUTPUT_STREAM</div>
+                            <div id="sim-output" class="code-block text-green-400 text-sm leading-relaxed min-h-[120px] whitespace-pre-wrap overflow-x-auto"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="py-16">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4" data-en="Way Forward" data-ms="Hala Tuju">Hala Tuju</h2>
+                <p class="text-slate-600 text-lg" data-en="AG3's strategic roadmap for accelerating DOSH's digital transformation." data-ms="Pelan hala tuju strategik AG3 untuk mempercepatkan transformasi digital DOSH.">Pelan hala tuju strategik AG3 untuk mempercepatkan transformasi digital DOSH.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto mb-16">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center relative">
+                    <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-slate-200 -z-10 transform -translate-y-1/2"></div>
+                    
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm w-full md:w-[30%] mb-4 md:mb-0 relative">
+                        <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold absolute -top-4 left-1/2 transform -translate-x-1/2 ring-4 ring-white">1</div>
+                        <h4 class="text-center font-bold text-slate-900 mt-2 mb-1" data-en="Phase 1: Alignment" data-ms="Fasa 1: Penjajaran">Fasa 1: Penjajaran</h4>
+                        <p class="text-center text-xs text-blue-600 font-semibold mb-2" data-en="Months 1 - 2" data-ms="Bulan 1 - 2">Bulan 1 - 2</p>
+                        <p class="text-xs text-slate-600 text-center" data-en="Requirement gathering, Ministry workshops, scope agreement, and integration planning." data-ms="Pengumpulan keperluan, bengkel Kementerian, persetujuan skop, dan perancangan integrasi.">Pengumpulan keperluan, bengkel Kementerian, persetujuan skop, dan perancangan integrasi.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm w-full md:w-[30%] mb-4 md:mb-0 relative">
+                        <div class="w-8 h-8 bg-slate-300 text-slate-700 rounded-full flex items-center justify-center font-bold absolute -top-4 left-1/2 transform -translate-x-1/2 ring-4 ring-white">2</div>
+                        <h4 class="text-center font-bold text-slate-900 mt-2 mb-1" data-en="Phase 2: Pilot" data-ms="Fasa 2: Perintis">Fasa 2: Perintis</h4>
+                        <p class="text-center text-xs text-slate-500 font-semibold mb-2" data-en="Months 3 - 5" data-ms="Bulan 3 - 5">Bulan 3 - 5</p>
+                        <p class="text-xs text-slate-600 text-center" data-en="Core platform development, select PJB onboarding, and regional pilot deployment." data-ms="Pembangunan platform teras, pendaftaran PJB terpilih, dan pelaksanaan perintis serantau.">Pembangunan platform teras, pendaftaran PJB terpilih, dan pelaksanaan perintis serantau.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm w-full md:w-[30%] relative">
+                        <div class="w-8 h-8 bg-slate-300 text-slate-700 rounded-full flex items-center justify-center font-bold absolute -top-4 left-1/2 transform -translate-x-1/2 ring-4 ring-white">3</div>
+                        <h4 class="text-center font-bold text-slate-900 mt-2 mb-1" data-en="Phase 3: Rollout" data-ms="Fasa 3: Pelaksanaan Penuh">Fasa 3: Pelaksanaan Penuh</h4>
+                        <p class="text-center text-xs text-slate-500 font-semibold mb-2" data-en="Month 6 onwards" data-ms="Bulan 6 dan seterusnya">Bulan 6 dan seterusnya</p>
+                        <p class="text-xs text-slate-600 text-center" data-en="Nationwide rollout, full integration, analytics activation, and continuous operations." data-ms="Pelaksanaan seluruh negara, integrasi penuh, pengaktifan analitik, dan operasi berterusan.">Pelaksanaan seluruh negara, integrasi penuh, pengaktifan analitik, dan operasi berterusan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-blue-600 text-white rounded-3xl p-10 text-center max-w-4xl mx-auto shadow-xl">
+                <h3 class="text-3xl font-bold mb-4" data-en="Ready to Transform Plant Inspection?" data-ms="Bersedia untuk Mentransformasikan Pemeriksaan Loji?">Bersedia untuk Mentransformasikan Pemeriksaan Loji?</h3>
+                <p class="text-blue-100 mb-8 max-w-2xl mx-auto" data-en="AG3 believes a centralised digital platform is the catalyst for enhancing industrial productivity and workplace safety nationwide. We welcome the opportunity for a detailed technical discussion." data-ms="AG3 percaya platform digital berpusat adalah pemangkin untuk meningkatkan produktiviti perindustrian dan keselamatan tempat kerja di seluruh negara. Kami mengalu-alukan peluang untuk perbincangan teknikal yang terperinci.">AG3 percaya platform digital berpusat adalah pemangkin untuk meningkatkan produktiviti perindustrian dan keselamatan tempat kerja di seluruh negara. Kami mengalu-alukan peluang untuk perbincangan teknikal yang terperinci.</p>
+                
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6 text-sm">
+                    <div class="flex items-center gap-2 bg-blue-700 px-6 py-3 rounded-full">
+                        <span>&#128222;</span> +603 – 8800 7000
+                    </div>
+                    <div class="flex items-center gap-2 bg-blue-700 px-6 py-3 rounded-full">
+                        <span>&#128231;</span> hello@ag3.com.my
+                    </div>
+                    <div class="flex items-center gap-2 bg-blue-700 px-6 py-3 rounded-full">
+                        <span>&#127760;</span> www.ag3.com.my
+                    </div>
+                </div>
+                <p class="text-blue-300 text-xs mt-8 opacity-70">AG3 Sdn. Bhd. | 05-05-02, Block 5, Corporate Park, Star Central, Lingkaran Cyber Point Timur, Cyber 12, 63000 Cyberjaya, Selangor</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs">
+        <p data-en="Proprietary & Confidential. Unauthorized copying & distribution is strictly prohibited. &copy; 2026 AG3 Sdn. Bhd." data-ms="Hak Cipta Terpelihara & Sulit. Penyalinan & pengedaran tanpa kebenaran dilarang sama sekali. &copy; 2026 AG3 Sdn. Bhd.">Hak Cipta Terpelihara & Sulit. Penyalinan & pengedaran tanpa kebenaran dilarang sama sekali. &copy; 2026 AG3 Sdn. Bhd.</p>
+    </footer>
+
+    <script>
+        // === GLOBAL LANGUAGE STATE & TOGGLE LOGIC ===
+        let currentLang = 'ms'; // Default language
+        let feeChartInstance = null; // Reference to ChartJS
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ms' ? 'en' : 'ms';
+            
+            // 1. Update the toggle button text itself
+            document.getElementById('langToggle').innerHTML = currentLang === 'ms' 
+                ? '&#127103; English' 
+                : '&#127103; Bahasa Melayu';
+
+            // 2. Update all static HTML elements with data-en / data-ms attributes
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.innerHTML = el.getAttribute(`data-${currentLang}`);
+            });
+
+            // 3. Update the dynamic Component Display text
+            const activeCompBtn = document.querySelector('#component-nav button.bg-blue-600');
+            if (activeCompBtn) {
+                updateComponentDisplay(activeCompBtn.getAttribute('data-comp'));
+            }
+
+            // 4. Update Dropdown Options (AI Roles)
+            const roleSelect = document.getElementById('role-select');
+            if (currentLang === 'en') {
+                roleSelect.innerHTML = `
+                    <option value="DOSH Director General">DOSH Director General</option>
+                    <option value="Ministry Finance Officer">Ministry Finance Officer</option>
+                    <option value="Plant Owner / Occupier">Plant Owner / Occupier</option>
+                    <option value="Registered PJB Inspector">Registered PJB Inspector</option>
+                `;
+            } else {
+                roleSelect.innerHTML = `
+                    <option value="Ketua Pengarah DOSH">Ketua Pengarah DOSH</option>
+                    <option value="Pegawai Kewangan Kementerian">Pegawai Kewangan Kementerian</option>
+                    <option value="Pemilik / Penghuni Loji">Pemilik / Penghuni Loji</option>
+                    <option value="Pemeriksa PJB Berdaftar">Pemeriksa PJB Berdaftar</option>
+                `;
+            }
+
+            // 5. Update Textarea Placeholder & Empty Output
+            const simInput = document.getElementById('sim-input');
+            const simOutput = document.getElementById('sim-output');
+            if (currentLang === 'en') {
+                simInput.placeholder = "e.g., We have a critical high-pressure boiler at our Shah Alam facility that needs an urgent inspection by this Friday due to an upcoming audit.";
+                if(!simOutput.innerHTML.includes('{')) simOutput.innerHTML = "// Awaiting user input to simulate routing logic...";
+            } else {
+                simInput.placeholder = "cth., Kami mempunyai dandang tekanan tinggi kritikal di kemudahan Shah Alam kami yang memerlukan pemeriksaan segera menjelang Jumaat ini kerana audit yang akan datang.";
+                if(!simOutput.innerHTML.includes('{')) simOutput.innerHTML = "// Menunggu input pengguna untuk mensimulasikan logik laluan...";
+            }
+
+            // 6. Update ChartJS Labels
+            if (feeChartInstance) {
+                feeChartInstance.data.labels = currentLang === 'en' 
+                    ? ['PJB Professional Services', 'DOSH Regulatory Fee', 'AG3 Platform Admin Fee'] 
+                    : ['Perkhidmatan Profesional PJB', 'Fi Kawal Selia DOSH', 'Fi Pentadbiran Platform AG3'];
+                feeChartInstance.update();
+            }
+        }
+
+        // === COMPONENT SECTION DATA (BILINGUAL) ===
+        const componentData = {
+            c1: {
+                icon: "&#9201;",
+                en: {
+                    title: "Smart Scheduling Engine",
+                    points: ["Intelligent matching with qualified PJBs", "Geo-based assignment & priority queuing", "Automated conflict resolution"],
+                    goalLabel: "Goal:", goal: "Minimise delays and optimise inspection capacity."
+                },
+                ms: {
+                    title: "Enjin Penjadualan Pintar",
+                    points: ["Padanan pintar dengan PJB berkelayakan", "Penugasan berasaskan geo & baris gilir keutamaan", "Penyelesaian konflik automatik"],
+                    goalLabel: "Matlamat:", goal: "Mengurangkan kelewatan dan mengoptimumkan kapasiti pemeriksaan."
+                }
+            },
+            c2: {
+                icon: "&#128100;",
+                en: {
+                    title: "PJB Registry & Competency",
+                    points: ["Qualifications & experience central registry", "Continuous performance tracking", "Transparent access for inspectors"],
+                    goalLabel: "Goal:", goal: "Ensure only compliant PJBs perform inspections."
+                },
+                ms: {
+                    title: "Pendaftaran & Kompetensi PJB",
+                    points: ["Pendaftaran pusat kelayakan & pengalaman", "Penjejakan prestasi berterusan", "Akses telus untuk pemeriksa"],
+                    goalLabel: "Matlamat:", goal: "Memastikan hanya PJB yang mematuhi syarat melakukan pemeriksaan."
+                }
+            },
+            c3: {
+                icon: "&#9881;",
+                en: {
+                    title: "Inspection Workflow & QA",
+                    points: ["Standardised digital assessment modules", "Digital report & CF submissions", "Integrated DOSH fee payments"],
+                    goalLabel: "Goal:", goal: "Consistent, auditable outcomes nationwide."
+                },
+                ms: {
+                    title: "Aliran Kerja Pemeriksaan & QA",
+                    points: ["Modul penilaian digital standard", "Penyerahan laporan & CF digital", "Pembayaran fi DOSH bersepadu"],
+                    goalLabel: "Matlamat:", goal: "Hasil yang konsisten dan boleh diaudit di seluruh negara."
+                }
+            },
+            c4: {
+                icon: "&#128202;",
+                en: {
+                    title: "Monitoring Dashboards",
+                    points: ["Live inspection demand & throughput view", "Automated alerts for non-compliance", "Exportable policy analytics"],
+                    goalLabel: "Goal:", goal: "Data-driven regulatory proactive enforcement."
+                },
+                ms: {
+                    title: "Papan Pemuka Pemantauan",
+                    points: ["Pandangan langsung permintaan & pemprosesan pemeriksaan", "Makluman automatik untuk ketidakpatuhan", "Analitik dasar yang boleh dieksport"],
+                    goalLabel: "Matlamat:", goal: "Penguatkuasaan proaktif kawal selia dipacu data."
+                }
+            },
+            c5: {
+                icon: "&#128190;",
+                en: {
+                    title: "Digital Records Registry",
+                    points: ["Tamper-evident repository of all reports", "Verifiable access for owners & insurers", "Secure long-term regulatory retention"],
+                    goalLabel: "Goal:", goal: "Single source of truth for plant compliance."
+                },
+                ms: {
+                    title: "Pendaftaran Rekod Digital",
+                    points: ["Repositori kalis gangguan untuk semua laporan", "Akses yang boleh disahkan untuk pemilik & syarikat insurans", "Penyimpanan kawal selia jangka panjang yang selamat"],
+                    goalLabel: "Matlamat:", goal: "Sumber kebenaran tunggal untuk pematuhan loji."
+                }
+            }
+        };
+
+        // UI Interactions
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        const contextTabs = document.querySelectorAll('#context-tabs button');
+        contextTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                contextTabs.forEach(t => t.className = "w-1/2 py-4 text-center font-semibold text-slate-500 hover:text-slate-800 transition-colors");
+                tab.className = "w-1/2 py-4 text-center font-semibold text-slate-800 bg-slate-100 transition-colors";
+                const target = tab.getAttribute('data-target');
+                document.getElementById('challenges').classList.add('hidden');
+                document.getElementById('mandate').classList.add('hidden');
+                document.getElementById(target).classList.remove('hidden');
+            });
+        });
+
+        const aiTabs = document.querySelectorAll('#ai-tabs button');
+        aiTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                aiTabs.forEach(t => t.className = "w-1/2 py-4 text-center font-semibold text-slate-500 hover:text-slate-800 transition-colors");
+                tab.className = "w-1/2 py-4 text-center font-bold text-blue-700 border-b-2 border-blue-600 transition-colors";
+                const target = tab.getAttribute('data-target');
+                document.getElementById('ai-summary').classList.add('hidden');
+                document.getElementById('ai-simulator').classList.add('hidden');
+                document.getElementById(target).classList.remove('hidden');
+            });
+        });
+
+        const compBtns = document.querySelectorAll('#component-nav button');
+        const compDisplay = document.getElementById('component-display');
+
+        function updateComponentDisplay(key) {
+            const data = componentData[key][currentLang];
+            const icon = componentData[key].icon;
+            compDisplay.innerHTML = `
+                <div class="fade-in w-full">
+                    <div class="text-5xl text-blue-600 mb-4">${icon}</div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">${data.title}</h3>
+                    <ul class="space-y-3 mb-6">
+                        ${data.points.map(p => `<li class="flex items-center gap-2 text-slate-700"><span class="text-green-500">&#10003;</span> ${p}</li>`).join('')}
+                    </ul>
+                    <div class="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r-lg">
+                        <strong class="text-slate-900">${data.goalLabel}</strong> <span class="text-slate-700">${data.goal}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        compBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                compBtns.forEach(b => b.className = "text-left px-6 py-4 rounded-xl font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all");
+                btn.className = "text-left px-6 py-4 rounded-xl font-bold bg-blue-600 text-white shadow-md transition-all";
+                updateComponentDisplay(btn.getAttribute('data-comp'));
+            });
+        });
+
+        function highlightStep(index) {
+            document.querySelectorAll('.step-indicator').forEach((ind, i) => {
+                ind.className = i <= index 
+                    ? "absolute -left-[35px] bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-white step-indicator transition-colors"
+                    : "absolute -left-[35px] bg-slate-300 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ring-4 ring-white step-indicator transition-colors";
+            });
+        }
+
+        // Initialize Defaults
+        updateComponentDisplay('c1');
+        document.getElementById('sim-output').innerHTML = "// Menunggu input pengguna untuk mensimulasikan logik laluan...";
+        document.getElementById('role-select').innerHTML = `
+            <option value="Ketua Pengarah DOSH">Ketua Pengarah DOSH</option>
+            <option value="Pegawai Kewangan Kementerian">Pegawai Kewangan Kementerian</option>
+            <option value="Pemilik / Penghuni Loji">Pemilik / Penghuni Loji</option>
+            <option value="Pemeriksa PJB Berdaftar">Pemeriksa PJB Berdaftar</option>
+        `;
+
+        // === GEMINI API INTEGRATION (BILINGUAL) ===
+        const apiKey = ""; 
+        
+        async function callGemini(promptText, isJson = false) {
+            const payload = { contents: [{ parts: [{ text: promptText }] }] };
+            if (isJson) payload.generationConfig = { responseMimeType: "application/json" };
+
+            let retries = 3, delay = 1000;
+            while (retries > 0) {
+                try {
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    const result = await response.json();
+                    return result.candidates?.[0]?.content?.parts?.[0]?.text || "";
+                } catch (error) {
+                    console.error("Gemini API Error:", error);
+                    retries--;
+                    if (retries === 0) throw error;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        document.getElementById('btn-summary').addEventListener('click', async () => {
+            const role = document.getElementById('role-select').value;
+            const outputEl = document.getElementById('summary-output');
+            const loadingTxt = currentLang === 'en' ? `Analyzing proposal context for ${role}...` : `Menganalisis konteks cadangan untuk ${role}...`;
+            
+            outputEl.innerHTML = `<div class="animate-pulse flex space-x-2 items-center text-blue-600 font-semibold"><div class="h-3 w-3 bg-blue-600 rounded-full"></div><div class="h-3 w-3 bg-blue-600 rounded-full"></div><div class="h-3 w-3 bg-blue-600 rounded-full"></div><span>${loadingTxt}</span></div>`;
+            
+            const promptLang = currentLang === 'en' ? 'IN ENGLISH' : 'IN MALAY';
+            const prompt = `You are presenting AG3's plant inspection proposal. Write a short, persuasive 2-paragraph executive summary ${promptLang} highlighting the value of this platform specifically for a ${role}. Keep it professional, impactful, and focus on relevant benefits (e.g. data oversight for DOSH, cost/downtime for owners, fair access for PJBs). Do not use markdown formatting like **bold** in the response. Ensure the response is completely in standard ${currentLang === 'en' ? 'English' : 'Malay'} language.`;
+
+            try {
+                const responseText = await callGemini(prompt, false);
+                outputEl.innerHTML = `<p class="fade-in">${responseText.replace(/\n\n/g, '</p><p class="mt-4">')}</p>`;
+            } catch (e) {
+                outputEl.innerHTML = currentLang === 'en' 
+                    ? `<span class="text-red-500">Failed to generate summary. Please check your connection.</span>`
+                    : `<span class="text-red-500">Gagal menjana ringkasan. Sila periksa sambungan internet anda.</span>`;
+            }
+        });
+
+        document.getElementById('btn-sim').addEventListener('click', async () => {
+            const inputTxt = document.getElementById('sim-input').value;
+            const outputEl = document.getElementById('sim-output');
+            
+            if (!inputTxt.trim()) {
+                outputEl.innerHTML = currentLang === 'en' ? "// Error: Please enter a request." : "// Ralat: Sila masukkan permintaan.";
+                return;
+            }
+
+            const loadingTxt = currentLang === 'en' ? "// Parsing natural language to routing logic..." : "// Menghuraikan bahasa semula jadi kepada logik laluan...";
+            outputEl.innerHTML = `<div class="animate-pulse flex space-x-2"><div class="h-3 w-3 bg-green-400 rounded-full"></div><div class="h-3 w-3 bg-green-400 rounded-full"></div><div class="h-3 w-3 bg-green-400 rounded-full"></div></div> ${loadingTxt}`;
+
+            const jsonInstruction = currentLang === 'en' 
+                ? 'The values inside the JSON MUST be in English language' 
+                : 'The values inside the JSON MUST be in Malay language';
+
+            const prompt = `You are the AI routing engine for AG3's plant inspection platform. Analyze the following unstructured text submitted by a plant owner and convert it into structured routing data. User Request: "${inputTxt}". Respond ONLY with a valid JSON object matching this schema. ${jsonInstruction}:
+            {
+              "plant_type_identified": "string (e.g., Boiler / Dandang)",
+              "location_extracted": "string (city or region)",
+              "urgency_level": "string",
+              "required_inspector_competency": "string",
+              "system_action": "string (A brief 1-sentence description of how the system will route this)"
+            }`;
+
+            try {
+                const responseText = await callGemini(prompt, true);
+                outputEl.innerHTML = `<pre class="fade-in">${JSON.stringify(JSON.parse(responseText), null, 2)}</pre>`;
+            } catch (e) {
+                 outputEl.innerHTML = `// Error:\n${responseText || "Failed to connect."}`;
+            }
+        });
+
+        // === CHART.JS ===
+        document.addEventListener("DOMContentLoaded", () => {
+            const ctx = document.getElementById('feeChart').getContext('2d');
+            feeChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Perkhidmatan Profesional PJB', 'Fi Kawal Selia DOSH', 'Fi Pentadbiran Platform AG3'],
+                    datasets: [{
+                        data: [75, 15, 10], 
+                        backgroundColor: ['#1e293b', '#3b82f6', '#f59e0b'],
+                        borderWidth: 0, hoverOffset: 4
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { padding: 20, font: { family: "'Inter', sans-serif" } } } },
+                    cutout: '65%'
+                }
+            });
+        });
+    </script>
+</body>
+</html>
