@@ -48,7 +48,6 @@
   }
   .nav-link:hover { color: var(--ag3-blue); }
   .nav-link:hover::after { width: 100%; }
-  .nav-link.special { color: var(--ag3-blue-mid); font-weight: 600; }
 
   /* HERO */
   .hero-bg {
@@ -117,7 +116,6 @@
     background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
     border-radius: 12px; padding: 20px;
     border: 1px solid rgba(220,38,38,0.12);
-    border-left: 3px solid var(--ag3-red);
   }
 
   /* COMPONENT TABS */
@@ -132,11 +130,6 @@
     background: var(--ag3-blue); color: white;
     border-color: var(--ag3-blue);
     box-shadow: 0 4px 20px rgba(26,61,143,0.25);
-  }
-  .comp-tab:not(.active):hover {
-    background: rgba(26,61,143,0.05);
-    border-color: rgba(26,61,143,0.1);
-    color: var(--ag3-blue);
   }
 
   /* PROCESS STEPPER */
@@ -167,31 +160,11 @@
     box-shadow: 0 0 0 4px white;
   }
 
-  /* AI SECTION */
-  .ai-hero {
-    background: linear-gradient(135deg, #0d1f4a 0%, #1a3d8f 100%);
-    border-radius: 20px; overflow: hidden; position: relative;
-  }
-  .terminal {
-    background: #0a0f1e; border-radius: 12px;
-    font-family: 'DM Mono', monospace; font-size: 12px;
-    color: #4ade80; overflow-x: auto;
-  }
-
-  /* TABS */
-  .ai-tab { 
-    padding: 12px 20px; font-weight: 600; font-size: 13px;
-    border-bottom: 2px solid transparent; color: #64748b;
-    cursor: pointer; transition: all 0.2s; white-space: nowrap;
-  }
-  .ai-tab.active { color: var(--ag3-blue); border-bottom-color: var(--ag3-blue); }
-
   /* BENEFIT ROWS */
   .benefit-row {
     display: flex; align-items: flex-start; gap: 12px; padding: 10px 0;
     border-bottom: 1px solid rgba(26,61,143,0.06);
   }
-  .benefit-row:last-child { border-bottom: none; }
   .check-ico {
     width: 20px; height: 20px; border-radius: 50%;
     background: rgba(37,99,235,0.1); color: var(--ag3-blue-mid);
@@ -204,12 +177,6 @@
     background: linear-gradient(135deg, var(--ag3-blue) 0%, #1e40af 50%, #1d4ed8 100%);
     border-radius: 24px; position: relative; overflow: hidden;
   }
-  .cta-section::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 50%),
-      radial-gradient(circle at 20% 80%, rgba(245,158,11,0.08) 0%, transparent 40%);
-  }
   .contact-pill {
     display: flex; align-items: center; gap: 10px;
     background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
@@ -217,800 +184,239 @@
     color: white; white-space: nowrap;
   }
 
-  /* SCROLLBAR HIDE */
-  .scrollbar-hide::-webkit-scrollbar { display: none; }
-  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-
   /* CHARTS */
   .chart-container {
     position: relative; width: 100%; max-width: 480px;
     height: 240px; margin: 0 auto;
   }
-  @media(min-width:768px){ .chart-container { height: 300px; } }
 
-  /* MOBILE MENU */
-  #mobileMenu {
-    background: white; border-top: 1px solid rgba(26,61,143,0.08);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-  }
-  .mobile-link {
-    display: block; padding: 12px 20px; font-weight: 600; font-size: 14px;
-    border-radius: 10px; color: #374151; transition: all 0.2s;
-  }
-  .mobile-link:hover { background: rgba(37,99,235,0.06); color: var(--ag3-blue); }
-
-  /* IMAGE PLACEHOLDERS */
-  .img-hero { 
-    background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(59,130,246,0.08) 100%);
-    border: 1px solid rgba(255,255,255,0.08); border-radius: 16px;
-  }
-  .visual-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.25);
-    color: #d97706; border-radius: 100px; padding: 3px 10px;
-    font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
-  }
-
-  /* Unsplash-sourced image tiles */
-  .img-facility {
-    background: url('https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=800&q=80') center/cover;
-    border-radius: 14px;
-  }
-  .img-digital {
-    background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80') center/cover;
-    border-radius: 14px;
-  }
-  .img-inspection {
-    background: url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=800&q=80') center/cover;
-    border-radius: 14px;
-  }
-  .img-team {
-    background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80') center/cover;
-    border-radius: 14px;
-  }
-  .img-data {
-    background: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80') center/cover;
-    border-radius: 14px;
-  }
+  /* IMAGES */
+  .img-facility { background: url('https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=800&q=80') center/cover; border-radius: 14px; }
+  .img-inspection { background: url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=800&q=80') center/cover; border-radius: 14px; }
+  .img-team { background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80') center/cover; border-radius: 14px; }
+  .img-data { background: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80') center/cover; border-radius: 14px; }
+  .img-digital { background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80') center/cover; border-radius: 14px; }
 </style>
 </head>
 <body>
 
-<!-- ═══════ NAVBAR ═══════ -->
 <nav class="nav-glass fixed w-full z-50 top-0">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <div class="flex-shrink-0">
-        <img src="data:image/png;base64,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" alt="AG3 Logo" class="h-10 w-auto object-contain">
+        <img src="https://via.placeholder.com/150x50?text=AG3+LOGO" alt="AG3 Logo" class="h-10 w-auto object-contain">
       </div>
 
-      <!-- DESKTOP NAV -->
       <div class="hidden lg:flex items-center gap-6">
         <a href="#context" class="nav-link" data-en="Context" data-ms="Konteks">Konteks</a>
         <a href="#components" class="nav-link" data-en="Components" data-ms="Komponen">Komponen</a>
         <a href="#value" class="nav-link" data-en="Value Add" data-ms="Nilai Tambah">Nilai Tambah</a>
         <a href="#operations" class="nav-link" data-en="Operations" data-ms="Operasi">Operasi</a>
-        <a href="#ai-demo" class="nav-link special" data-en="✦ AI Demo" data-ms="✦ Demo AI">✦ Demo AI</a>
         <a href="#roadmap" class="nav-link" data-en="Roadmap" data-ms="Hala Tuju">Hala Tuju</a>
         <button onclick="toggleLanguage()" class="ml-2 px-4 py-2 rounded-full border border-blue-600 text-blue-700 hover:bg-blue-600 hover:text-white transition-all font-semibold text-xs tracking-wider uppercase">
           <span id="desktopLangText">🇬🇧 English</span>
         </button>
       </div>
 
-      <!-- HAMBURGER -->
       <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg text-slate-600 hover:text-blue-700">
-        <svg id="menuIco" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path id="menuPath" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path id="menuPath" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
   </div>
 
-  <!-- MOBILE MENU -->
-  <div id="mobileMenu" class="hidden lg:hidden absolute w-full px-4 py-4">
+  <div id="mobileMenu" class="hidden lg:hidden absolute w-full bg-white px-4 py-4 border-t border-slate-100 shadow-xl">
     <div class="flex flex-col gap-1">
-      <a href="#context" class="mobile-link mobile-nav-link" data-en="Context" data-ms="Konteks">Konteks</a>
-      <a href="#components" class="mobile-link mobile-nav-link" data-en="Components" data-ms="Komponen">Komponen</a>
-      <a href="#value" class="mobile-link mobile-nav-link" data-en="Value Add" data-ms="Nilai Tambah">Nilai Tambah</a>
-      <a href="#operations" class="mobile-link mobile-nav-link" data-en="Operations" data-ms="Operasi">Operasi</a>
-      <a href="#ai-demo" class="mobile-link mobile-nav-link font-bold text-blue-700" data-en="✦ AI Demo" data-ms="✦ Demo AI">✦ Demo AI</a>
-      <a href="#roadmap" class="mobile-link mobile-nav-link" data-en="Roadmap" data-ms="Hala Tuju">Hala Tuju</a>
-      <div class="mt-3 pt-3 border-t border-slate-100">
-        <button onclick="toggleLanguage()" class="w-full py-3 rounded-xl border-2 border-blue-600 text-blue-700 font-bold text-sm">
-          <span id="mobileLangText">🇬🇧 Switch to English</span>
-        </button>
-      </div>
+      <a href="#context" class="block p-3 font-semibold text-slate-700 hover:bg-blue-50 rounded-lg mobile-nav-link" data-en="Context" data-ms="Konteks">Konteks</a>
+      <a href="#components" class="block p-3 font-semibold text-slate-700 hover:bg-blue-50 rounded-lg mobile-nav-link" data-en="Components" data-ms="Komponen">Komponen</a>
+      <a href="#value" class="block p-3 font-semibold text-slate-700 hover:bg-blue-50 rounded-lg mobile-nav-link" data-en="Value Add" data-ms="Nilai Tambah">Nilai Tambah</a>
+      <a href="#operations" class="block p-3 font-semibold text-slate-700 hover:bg-blue-50 rounded-lg mobile-nav-link" data-en="Operations" data-ms="Operasi">Operasi</a>
+      <a href="#roadmap" class="block p-3 font-semibold text-slate-700 hover:bg-blue-50 rounded-lg mobile-nav-link" data-en="Roadmap" data-ms="Hala Tuju">Hala Tuju</a>
+      <button onclick="toggleLanguage()" class="w-full mt-3 py-3 rounded-xl border-2 border-blue-600 text-blue-700 font-bold text-sm">
+        <span id="mobileLangText">🇬🇧 Switch to English</span>
+      </button>
     </div>
   </div>
 </nav>
 
-<!-- ═══════ HERO ═══════ -->
 <header class="hero-bg pt-16 min-h-screen flex items-center relative">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
-
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 relative z-10 w-full">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      <!-- LEFT -->
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
       <div>
         <div class="flex items-center gap-3 mb-6">
-          <span class="tag-pill">
-            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
-            <span data-en="Strategy · National Initiative" data-ms="Strategi · Inisiatif Nasional">Strategi · Inisiatif Nasional</span>
-          </span>
+          <span class="tag-pill"><span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span><span data-en="Strategy · National Initiative" data-ms="Strategi · Inisiatif Nasional">Strategi · Inisiatif Nasional</span></span>
         </div>
-
-        <h1 class="text-4xl sm:text-5xl lg:text-[56px] font-bold leading-[1.08] text-white mb-6"
-            data-en="Centralised Digital Platform for Plant Inspection"
-            data-ms="Platform Digital Berpusat untuk Pemeriksaan Loji">
+        <h1 class="text-4xl lg:text-[56px] font-bold leading-[1.08] text-white mb-6" data-en="Centralised Digital Platform for Plant Inspection" data-ms="Platform Digital Berpusat untuk Pemeriksaan Loji">
           Platform Digital Berpusat <span style="color: #60a5fa;">untuk Pemeriksaan Loji</span>
         </h1>
-
-        <p class="text-slate-300 text-lg leading-relaxed mb-10 max-w-xl font-light"
-           data-en="Transforming plant inspection and Certificate of Fitness administration through a unified, AI-powered national digital ecosystem."
-           data-ms="Mentransformasikan pemeriksaan loji dan pentadbiran Perakuan Kelayakan melalui ekosistem digital nasional yang disatukan dan dikuasai AI.">
-          Mentransformasikan pemeriksaan loji dan pentadbiran Perakuan Kelayakan melalui ekosistem digital nasional yang disatukan dan dikuasai AI.
+        <p class="text-slate-300 text-lg mb-10 max-w-xl font-light" data-en="Transforming plant inspection and Certificate of Fitness administration through a unified national digital ecosystem." data-ms="Mentransformasikan pemeriksaan loji dan pentadbiran Perakuan Kelayakan melalui ekosistem digital nasional yang disatukan.">
+          Mentransformasikan pemeriksaan loji dan pentadbiran Perakuan Kelayakan melalui ekosistem digital nasional yang disatukan.
         </p>
-
-        <div class="flex flex-col sm:flex-row gap-4 mb-12">
-          <a href="#context" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-blue-500 hover:bg-blue-400 text-white font-semibold rounded-xl transition-all text-sm">
-            <span data-en="Explore Platform" data-ms="Terokai Platform">Terokai Platform</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-          <a href="#ai-demo" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-white/20 hover:border-white/40 text-white font-semibold rounded-xl transition-all text-sm bg-white/5 hover:bg-white/10">
-            <span>✦</span>
-            <span data-en="Try AI Demo" data-ms="Cuba Demo AI">Cuba Demo AI</span>
-          </a>
-        </div>
-
-        <!-- STATS ROW -->
         <div class="flex gap-4">
-          <div class="stat-card flex-1 text-center">
-            <div class="text-2xl font-bold text-white mb-1">6</div>
-            <div class="text-xs text-slate-400 font-medium" data-en="Core Modules" data-ms="Modul Teras">Modul Teras</div>
-          </div>
-          <div class="stat-card flex-1 text-center">
-            <div class="text-2xl font-bold" style="color:#f59e0b;">100%</div>
-            <div class="text-xs text-slate-400 font-medium" data-en="Self-Funding" data-ms="Membiayai Sendiri">Membiayai Sendiri</div>
-          </div>
-          <div class="stat-card flex-1 text-center">
-            <div class="text-2xl font-bold text-white mb-1">3</div>
-            <div class="text-xs text-slate-400 font-medium" data-en="Phase Rollout" data-ms="Fasa Pelaksanaan">Fasa Pelaksanaan</div>
-          </div>
+          <a href="#context" class="px-8 py-4 bg-blue-500 hover:bg-blue-400 text-white font-semibold rounded-xl transition-all text-sm" data-en="Explore Platform" data-ms="Terokai Platform">Terokai Platform</a>
         </div>
       </div>
-
-      <!-- RIGHT: VISUAL CARD -->
       <div class="hidden lg:block">
         <div class="img-facility w-full h-[420px] relative">
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,15,30,0.65) 0%,transparent 60%);border-radius:14px;"></div>
-          <div style="position:absolute;bottom:20px;left:20px;right:20px;">
-            <div class="visual-badge mb-2">🏭 Industrial Plant Inspection</div>
-            <p class="text-white text-sm font-medium opacity-90">Pemeriksaan loji diurus secara digital, cekap, dan telus</p>
-          </div>
-        </div>
-
-        <!-- FLOATING CARD -->
-        <div style="position:relative;margin-top:-60px;margin-right:0;margin-left:auto;width:240px;z-index:10;">
-          <div class="card p-4 ml-auto" style="box-shadow:0 20px 60px rgba(26,61,143,0.2);">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="icon-box" style="background:rgba(37,99,235,0.1);">🤖</div>
-              <div>
-                <div class="text-xs font-bold text-slate-800">AI Smart Match</div>
-                <div class="text-xs text-slate-500">PJB assigned in &lt;2 min</div>
-              </div>
-            </div>
-            <div class="flex items-center gap-2">
-              <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-              <span class="text-xs text-green-600 font-semibold">System Active</span>
-            </div>
-          </div>
         </div>
       </div>
-    </div>
-
-    <!-- SUBMITTED TO -->
-    <div class="mt-16 pt-8 border-t border-white/10 flex flex-wrap items-center gap-4">
-      <span class="text-slate-400 text-xs font-medium uppercase tracking-widest" data-en="Submitted to" data-ms="Dikemukakan kepada">Dikemukakan kepada</span>
-      <span class="text-white text-sm font-semibold">Jabatan Keselamatan dan Kesihatan Pekerjaan (DOSH)</span>
-      <span class="text-slate-500">·</span>
-      <span class="text-slate-300 text-sm" data-en="Ministry of Human Resources, Malaysia" data-ms="Kementerian Sumber Manusia, Malaysia">Kementerian Sumber Manusia, Malaysia</span>
     </div>
   </div>
 </header>
 
-<!-- ═══════ CONTEXT ═══════ -->
 <section id="context" class="py-20 lg:py-28 scroll-mt-16">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid lg:grid-cols-2 gap-16 items-start">
-      <!-- LEFT TEXT -->
+    <div class="grid lg:grid-cols-2 gap-16">
       <div>
         <span class="section-label" data-en="Problem Statement" data-ms="Pernyataan Masalah">Pernyataan Masalah</span>
-        <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mt-2 mb-6" data-en="The Systemic Gaps in Plant Inspection" data-ms="Jurang Sistemik dalam Pemeriksaan Loji">Jurang Sistemik dalam Pemeriksaan Loji</h2>
-        <p class="text-slate-600 leading-relaxed mb-8" data-en="Malaysia's plant inspection regime suffers from fragmented scheduling, inconsistent processes, and limited data oversight—creating compliance gaps and safety risks at scale." data-ms="Rejim pemeriksaan loji Malaysia mengalami penjadualan yang terpecah-pecah, proses tidak konsisten, dan pemantauan data yang terhad—mewujudkan jurang pematuhan dan risiko keselamatan yang besar.">Rejim pemeriksaan loji Malaysia mengalami penjadualan yang terpecah-pecah, proses tidak konsisten, dan pemantauan data yang terhad—mewujudkan jurang pematuhan dan risiko keselamatan yang besar.</p>
-
+        <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mt-2 mb-6" data-en="The Systemic Gaps" data-ms="Jurang Sistemik">Jurang Sistemik</h2>
         <div class="space-y-4">
-          <div class="challenge-card">
-            <div class="flex items-start gap-4">
-              <span class="text-2xl">⏱</span>
-              <div>
-                <h4 class="font-bold text-slate-900 mb-1" data-en="Fragmented Scheduling" data-ms="Penjadualan Terpecah">Penjadualan Terpecah</h4>
-                <p class="text-slate-600 text-sm" data-en="Manual scheduling bottlenecks delay qualified PJB assignment and reduce inspection throughput." data-ms="Kesesakan penjadualan manual melewatkan penugasan PJB berkelayakan dan mengurangkan kapasiti pemeriksaan.">Kesesakan penjadualan manual melewatkan penugasan PJB berkelayakan dan mengurangkan kapasiti pemeriksaan.</p>
-              </div>
-            </div>
-          </div>
-          <div class="challenge-card">
-            <div class="flex items-start gap-4">
-              <span class="text-2xl">📂</span>
-              <div>
-                <h4 class="font-bold text-slate-900 mb-1" data-en="Inconsistent Process" data-ms="Proses Tidak Konsisten">Proses Tidak Konsisten</h4>
-                <p class="text-slate-600 text-sm" data-en="Disparate record management creates documentation gaps and complicates scale-based verification." data-ms="Pengurusan rekod yang tidak seragam mewujudkan jurang dokumentasi dan menyukarkan pengesahan berasaskan skala.">Pengurusan rekod yang tidak seragam mewujudkan jurang dokumentasi dan menyukarkan pengesahan berasaskan skala.</p>
-              </div>
-            </div>
-          </div>
-          <div class="challenge-card">
-            <div class="flex items-start gap-4">
-              <span class="text-2xl">📊</span>
-              <div>
-                <h4 class="font-bold text-slate-900 mb-1" data-en="Limited Data Oversight" data-ms="Pemantauan Data Terhad">Pemantauan Data Terhad</h4>
-                <p class="text-slate-600 text-sm" data-en="No national view of inspection trends hampers evidence-based policy and resource planning." data-ms="Tiada pandangan nasional terhadap trend pemeriksaan menghalang dasar berasaskan bukti dan perancangan sumber.">Tiada pandangan nasional terhadap trend pemeriksaan menghalang dasar berasaskan bukti dan perancangan sumber.</p>
-              </div>
-            </div>
-          </div>
+          <div class="challenge-card"><strong>⏱ Penjadualan Terpecah</strong><br><span class="text-slate-600 text-sm">Kesesakan manual melewatkan penugasan PJB.</span></div>
+          <div class="challenge-card"><strong>📂 Proses Tidak Konsisten</strong><br><span class="text-slate-600 text-sm">Pengurusan rekod tidak seragam mewujudkan jurang data.</span></div>
         </div>
       </div>
-
-      <!-- RIGHT: IMAGE + MANDATE GRID -->
-      <div>
-        <div class="img-inspection w-full h-52 mb-6"></div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="card p-5">
-            <div class="text-3xl mb-3">⏰</div>
-            <h4 class="font-bold text-slate-900 text-sm mb-1" data-en="Efficient Scheduling" data-ms="Penjadualan Cekap">Penjadualan Cekap</h4>
-            <p class="text-xs text-slate-500" data-en="Smart auto-assignment reduces delays." data-ms="Penugasan automatik pintar mengurangkan kelewatan.">Penugasan automatik pintar mengurangkan kelewatan.</p>
-          </div>
-          <div class="card p-5">
-            <div class="text-3xl mb-3">👨‍💻</div>
-            <h4 class="font-bold text-slate-900 text-sm mb-1" data-en="Qualified PJB Matching" data-ms="Padanan PJB Berkelayakan">Padanan PJB Berkelayakan</h4>
-            <p class="text-xs text-slate-500" data-en="Merit-based, geo-aware assignment." data-ms="Penugasan berasaskan merit dan lokasi geo.">Penugasan berasaskan merit dan lokasi geo.</p>
-          </div>
-          <div class="card p-5">
-            <div class="text-3xl mb-3">⚙️</div>
-            <h4 class="font-bold text-slate-900 text-sm mb-1" data-en="Standardised Workflow" data-ms="Aliran Kerja Standard">Aliran Kerja Standard</h4>
-            <p class="text-xs text-slate-500" data-en="DOSH-compliant digital SOPs nationwide." data-ms="SOP digital pematuhan DOSH seluruh negara.">SOP digital pematuhan DOSH seluruh negara.</p>
-          </div>
-          <div class="card p-5">
-            <div class="text-3xl mb-3">👁</div>
-            <h4 class="font-bold text-slate-900 text-sm mb-1" data-en="Transparent Oversight" data-ms="Pemantauan Telus">Pemantauan Telus</h4>
-            <p class="text-xs text-slate-500" data-en="Live dashboards for regulators." data-ms="Papan pemuka langsung untuk pengawal selia.">Papan pemuka langsung untuk pengawal selia.</p>
-          </div>
-        </div>
-      </div>
+      <div class="img-inspection w-full h-full min-h-[300px]"></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ COMPONENTS ═══════ -->
-<section id="components" class="py-20 lg:py-28 scroll-mt-16" style="background:linear-gradient(180deg,#f8faff 0%,white 100%);">
+<section id="components" class="py-20 lg:py-28 bg-slate-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14">
-      <span class="section-label" data-en="Platform Architecture" data-ms="Seni Bina Platform">Seni Bina Platform</span>
-      <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mt-2 mb-4" data-en="Six Core Components" data-ms="Enam Komponen Teras">Enam Komponen Teras</h2>
-      <p class="text-slate-500 max-w-2xl mx-auto" data-en="A single-window architecture connecting users, regulators and external systems to one national inspection record." data-ms="Seni bina tetingkap tunggal yang menghubungkan pengguna, pengawal selia dan sistem luaran kepada satu rekod pemeriksaan nasional.">Seni bina tetingkap tunggal yang menghubungkan pengguna, pengawal selia dan sistem luaran kepada satu rekod pemeriksaan nasional.</p>
+      <span class="section-label">Komponen Teras</span>
+      <h2 class="text-3xl font-bold text-slate-900 mt-2">6 Modul Utama AG3</h2>
     </div>
-
-    <div class="flex flex-col lg:flex-row gap-6 lg:gap-8">
-      <!-- TABS -->
-      <div class="w-full lg:w-72 flex flex-row lg:flex-col gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-hide" id="component-nav">
-        <button class="comp-tab active" data-comp="c1">
-          <span>⏱</span><span data-en="1. Smart Scheduling" data-ms="1. Penjadualan Pintar">1. Penjadualan Pintar</span>
-        </button>
-        <button class="comp-tab" data-comp="c2">
-          <span>👤</span><span data-en="2. PJB Registry" data-ms="2. Pendaftaran PJB">2. Pendaftaran PJB</span>
-        </button>
-        <button class="comp-tab" data-comp="c3">
-          <span>⚙️</span><span data-en="3. Inspection Workflow" data-ms="3. Aliran Kerja">3. Aliran Kerja</span>
-        </button>
-        <button class="comp-tab" data-comp="c4">
-          <span>📊</span><span data-en="4. Monitoring Dashboard" data-ms="4. Papan Pemuka">4. Papan Pemuka</span>
-        </button>
-        <button class="comp-tab" data-comp="c5">
-          <span>💾</span><span data-en="5. Digital Registry" data-ms="5. Pendaftaran Digital">5. Pendaftaran Digital</span>
-        </button>
-        <button class="comp-tab" data-comp="c6">
-          <span>🔍</span><span data-en="6. Quality Audit" data-ms="6. Audit Kualiti">6. Audit Kualiti</span>
-        </button>
+    <div class="flex flex-col lg:flex-row gap-8">
+      <div class="w-full lg:w-72 flex flex-col gap-2" id="component-nav">
+        <button class="comp-tab active" data-comp="c1">⏱ Penjadualan Pintar</button>
+        <button class="comp-tab" data-comp="c2">👤 Pendaftaran PJB</button>
+        <button class="comp-tab" data-comp="c3">⚙️ Aliran Kerja</button>
+        <button class="comp-tab" data-comp="c4">📊 Papan Pemuka</button>
+        <button class="comp-tab" data-comp="c5">💾 Rekod Digital</button>
+        <button class="comp-tab" data-comp="c6">🔍 Audit Kualiti</button>
       </div>
-
-      <!-- DISPLAY PANEL -->
-      <div class="flex-1 card p-8 min-h-[320px] flex items-start" id="component-display"></div>
+      <div class="flex-1 card p-8 min-h-[320px]" id="component-display"></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ VALUE ADD ═══════ -->
-<section id="value" class="py-20 lg:py-28 scroll-mt-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-14">
-      <span class="section-label" data-en="Strategic Benefits" data-ms="Faedah Strategik">Faedah Strategik</span>
-      <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mt-2 mb-4" data-en="Value for Every Stakeholder" data-ms="Nilai untuk Setiap Pihak Berkepentingan">Nilai untuk Setiap Pihak Berkepentingan</h2>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-      <!-- DOSH -->
-      <div class="card p-7">
-        <div class="icon-box mb-5" style="background:rgba(37,99,235,0.1);">🏛️</div>
-        <h3 class="font-bold text-slate-900 text-lg mb-4" data-en="For DOSH & Ministry" data-ms="Untuk DOSH & Kementerian">Untuk DOSH & Kementerian</h3>
-        <div class="space-y-3">
-          <div class="benefit-row">
-            <div class="check-ico">✓</div>
-            <div class="text-sm text-slate-700" data-en="<strong>Live Oversight</strong> — National view of inspections & CFs" data-ms="<strong>Pemantauan Langsung</strong> — Pandangan nasional pemeriksaan & CF"><strong>Pemantauan Langsung</strong> — Pandangan nasional pemeriksaan & CF</div>
-          </div>
-          <div class="benefit-row">
-            <div class="check-ico">✓</div>
-            <div class="text-sm text-slate-700" data-en="<strong>Regulatory Excellence</strong> — Evidence-based policy data" data-ms="<strong>Kecemerlangan Kawal Selia</strong> — Data dasar berasaskan bukti"><strong>Kecemerlangan Kawal Selia</strong> — Data dasar berasaskan bukti</div>
-          </div>
-          <div class="benefit-row">
-            <div class="check-ico">✓</div>
-            <div class="text-sm text-slate-700" data-en="<strong>Compliance</strong> — Automated alerts & audit trails" data-ms="<strong>Pematuhan</strong> — Makluman automatik & jejak audit"><strong>Pematuhan</strong> — Makluman automatik & jejak audit</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- OWNERS -->
-      <div class="card p-7">
-        <div class="icon-box mb-5" style="background:rgba(15,118,110,0.1);">🏭</div>
-        <h3 class="font-bold text-slate-900 text-lg mb-4" data-en="For Owners & Occupiers" data-ms="Untuk Pemilik & Penghuni">Untuk Pemilik & Penghuni</h3>
-        <div class="space-y-3">
-          <div class="benefit-row">
-            <div class="check-ico">✓</div>
-            <div class="text-sm text-slate-700" data-en="<strong>Operational Efficiency</strong> — Faster scheduling, less downtime" data-ms="<strong>Kecekapan Operasi</strong> — Penjadualan pantas, kurang masa henti"><strong>Kecekapan Operasi</strong> — Penjadualan pantas, kurang masa henti</div>
-          </div>
-          <div class="benefit-row">
-            <div class="check-ico">✓</div>
-            <div class="text-sm text-slate-700" data-en="<strong>Transparency</strong> — Visible PJB selection & fee tracking" data-ms="<strong>Ketelusan</strong> — Pemilihan PJB & penjejakan fi yang boleh dilihat"><strong>Ketelusan</strong> — Pemilihan PJB & penjejakan fi yang boleh dilihat</div>
-          </div>
-          <div class="benefit-row">
-            <div class="check-ico">✓</div>
-            <div class="text-sm text-slate-700" data-en="<strong>Centralised</strong> — History & CF records in one portal" data-ms="<strong>Berpusat</strong> — Rekod sejarah & CF dalam satu portal"><strong>Berpusat</strong> — Rekod sejarah & CF dalam satu portal</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PJBs -->
-      <div class="card p-7">
-        <div class="icon-box mb-5" style="background:rgba(217,119,6,0.1);">🔧</div>
-        <h3 class="font-bold text-slate-900 text-lg mb-4" data-en="For PJBs & Industry" data-ms="Untuk PJB & Industri">Untuk PJB & Industri</h3>
-        <div class="space-y-3">
-          <div class="benefit-row">
-            <div class="check-ico">✓</div>
-            <div class="text-sm text-slate-700" data-en="<strong>Fair Access</strong> — Merit-based assignment system" data-ms="<strong>Akses Adil</strong> — Sistem penugasan berasaskan merit"><strong>Akses Adil</strong> — Sistem penugasan berasaskan merit</div>
-          </div>
-          <div class="benefit-row">
-            <div class="check-ico">✓</div>
-            <div class="text-sm text-slate-700" data-en="<strong>Focus</strong> — Less admin, more time for technical work" data-ms="<strong>Fokus</strong> — Kurang kerja admin, lebih fokus teknikal"><strong>Fokus</strong> — Kurang kerja admin, lebih fokus teknikal</div>
-          </div>
-          <div class="benefit-row">
-            <div class="check-ico">✓</div>
-            <div class="text-sm text-slate-700" data-en="<strong>Performance</strong> — Clear feedback & growth records" data-ms="<strong>Prestasi</strong> — Maklum balas jelas & rekod pertumbuhan"><strong>Prestasi</strong> — Maklum balas jelas & rekod pertumbuhan</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- IMAGERY STRIP -->
-    <div class="grid grid-cols-3 gap-4 h-40">
-      <div class="img-team w-full h-full"></div>
-      <div class="img-data w-full h-full"></div>
-      <div class="img-digital w-full h-full"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ OPERATIONS ═══════ -->
-<section id="operations" class="py-20 lg:py-28 scroll-mt-16" style="background:white;">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-14">
-      <span class="section-label" data-en="Investment & Operating Model" data-ms="Model Pelaburan & Operasi">Model Pelaburan & Operasi</span>
-      <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mt-2 mb-4" data-en="How the Platform Operates" data-ms="Bagaimana Platform Beroperasi">Bagaimana Platform Beroperasi</h2>
-      <p class="text-slate-500 max-w-2xl mx-auto" data-en="A sustainable, self-funding national platform delivered in a Build-and-Operate partnership with DOSH." data-ms="Platform nasional yang mampan, membiayai sendiri dan disampaikan dalam perkongsian Bina-dan-Kendalikan dengan DOSH.">Platform nasional yang mampan, membiayai sendiri dan disampaikan dalam perkongsian Bina-dan-Kendalikan dengan DOSH.</p>
-    </div>
-
-    <div class="grid lg:grid-cols-2 gap-12 mb-14">
-      <!-- STEPPER -->
-      <div>
-        <h3 class="font-bold text-slate-900 text-xl mb-8" data-en="End-to-End Process Flow" data-ms="Aliran Proses Hujung-ke-Hujung">Aliran Proses Hujung-ke-Hujung</h3>
-        <div class="relative border-l-2 border-blue-100 ml-4 space-y-8" id="process-stepper">
-          <div class="relative cursor-pointer group pl-8 md:pl-10" onclick="highlightStep(0)">
-            <div class="step-node done" style="left:-18px;top:0;position:absolute;box-shadow:0 0 0 4px white;">1</div>
-            <h4 class="font-bold text-slate-900 text-base group-hover:text-blue-700 transition-colors" data-en="Request" data-ms="Permintaan">Permintaan</h4>
-            <p class="text-slate-500 text-sm mt-1" data-en="Plant owner submits via the AG3 portal — anytime, anywhere." data-ms="Pemilik loji mengemukakan permintaan melalui portal AG3 — bila-bila masa, di mana sahaja.">Pemilik loji mengemukakan permintaan melalui portal AG3 — bila-bila masa, di mana sahaja.</p>
-          </div>
-          <div class="relative cursor-pointer group pl-8 md:pl-10" onclick="highlightStep(1)">
-            <div class="step-node idle" style="left:-18px;top:0;position:absolute;box-shadow:0 0 0 4px white;">2</div>
-            <h4 class="font-bold text-slate-900 text-base group-hover:text-blue-700 transition-colors" data-en="Match" data-ms="Padanan">Padanan</h4>
-            <p class="text-slate-500 text-sm mt-1" data-en="Smart engine assigns a qualified PJB by geo-location and competency." data-ms="Enjin pintar menetapkan PJB berkelayakan berdasarkan lokasi geo dan kompetensi.">Enjin pintar menetapkan PJB berkelayakan berdasarkan lokasi geo dan kompetensi.</p>
-          </div>
-          <div class="relative cursor-pointer group pl-8 md:pl-10" onclick="highlightStep(2)">
-            <div class="step-node idle" style="left:-18px;top:0;position:absolute;box-shadow:0 0 0 4px white;">3</div>
-            <h4 class="font-bold text-slate-900 text-base group-hover:text-blue-700 transition-colors" data-en="Inspect" data-ms="Pemeriksaan">Pemeriksaan</h4>
-            <p class="text-slate-500 text-sm mt-1" data-en="Conducted per DOSH SOPs using standardised digital modules." data-ms="Dijalankan mengikut SOP DOSH menggunakan modul digital standard.">Dijalankan mengikut SOP DOSH menggunakan modul digital standard.</p>
-          </div>
-          <div class="relative cursor-pointer group pl-8 md:pl-10" onclick="highlightStep(3)">
-            <div class="step-node idle" style="left:-18px;top:0;position:absolute;box-shadow:0 0 0 4px white;">4</div>
-            <h4 class="font-bold text-slate-900 text-base group-hover:text-blue-700 transition-colors" data-en="Review" data-ms="Semakan">Semakan</h4>
-            <p class="text-slate-500 text-sm mt-1" data-en="Straight-through DOSH workflow for CF application and fee payment." data-ms="Aliran kerja terus ke DOSH untuk permohonan CF dan pembayaran fi.">Aliran kerja terus ke DOSH untuk permohonan CF dan pembayaran fi.</p>
-          </div>
-          <div class="relative cursor-pointer group pl-8 md:pl-10" onclick="highlightStep(4)">
-            <div class="step-node idle" style="left:-18px;top:0;position:absolute;box-shadow:0 0 0 4px white;">5</div>
-            <h4 class="font-bold text-slate-900 text-base group-hover:text-blue-700 transition-colors" data-en="Record" data-ms="Rekod">Rekod</h4>
-            <p class="text-slate-500 text-sm mt-1" data-en="Stored securely in the tamper-evident National CF Registry." data-ms="Disimpan dengan selamat dalam Pendaftaran CF Nasional kalis gangguan.">Disimpan dengan selamat dalam Pendaftaran CF Nasional kalis gangguan.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- CHART -->
-      <div>
-        <h3 class="font-bold text-slate-900 text-xl mb-6" data-en="Self-Funding Revenue Model" data-ms="Model Hasil Membiayai Sendiri">Model Hasil Membiayai Sendiri</h3>
-        <p class="text-slate-500 text-sm mb-6" data-en="The platform integrates seamlessly within the newly regulated inspection fee structure—no added cost burden to end-users." data-ms="Platform disepadukan secara lancar dalam struktur fi pemeriksaan standard baharu—tanpa beban kos tambahan kepada pengguna akhir.">Platform disepadukan secara lancar dalam struktur fi pemeriksaan standard baharu—tanpa beban kos tambahan kepada pengguna akhir.</p>
-        <div class="card p-6">
-          <p class="text-sm font-semibold text-slate-700 text-center mb-4" id="chartTitle" data-en="Hypothetical Fee Structure Breakdown" data-ms="Pecahan Struktur Fi Hipotetikal">Pecahan Struktur Fi Hipotetikal</p>
-          <div class="chart-container"><canvas id="feeChart"></canvas></div>
-          <p class="text-center text-xs text-slate-400 mt-4" data-en="*Illustrative only. Final model pending Ministry approval." data-ms="*Ilustrasi sahaja. Model akhir tertakluk kelulusan Kementerian.">*Ilustrasi sahaja. Model akhir tertakluk kelulusan Kementerian.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ AI DEMO ═══════ -->
-<section id="ai-demo" class="py-20 lg:py-28 scroll-mt-16" style="background:linear-gradient(180deg,#f8faff 0%,white 100%);">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="ai-hero p-8 lg:p-14 mb-10 relative">
-      <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 70% 30%,rgba(59,130,246,0.12) 0%,transparent 60%);pointer-events:none;border-radius:20px;"></div>
-      <div class="relative z-10 max-w-2xl">
-        <span class="tag-pill mb-4">✦ Powered by Gemini AI</span>
-        <h2 class="text-3xl lg:text-4xl font-bold text-white mt-4 mb-4" data-en="Interactive AI Capabilities" data-ms="Keupayaan AI Interaktif">Keupayaan AI Interaktif</h2>
-        <p class="text-blue-200 text-base leading-relaxed" data-en="Experience how the AG3 platform leverages advanced Language Models to streamline administrative workflows and intelligently process inspection requests." data-ms="Alami bagaimana platform AG3 memanfaatkan Model Bahasa Lanjutan untuk menyelaraskan aliran kerja pentadbiran dan memproses permintaan pemeriksaan secara pintar.">Alami bagaimana platform AG3 memanfaatkan Model Bahasa Lanjutan untuk menyelaraskan aliran kerja pentadbiran dan memproses permintaan pemeriksaan secara pintar.</p>
-      </div>
-    </div>
-
-    <div class="card overflow-hidden">
-      <!-- TABS -->
-      <div class="flex border-b border-slate-100 bg-slate-50/60 overflow-x-auto scrollbar-hide" id="ai-tabs">
-        <button class="ai-tab active flex-shrink-0" data-target="ai-summary" data-en="Proposal Tailoring Assistant" data-ms="Pembantu Penyesuaian Cadangan">Pembantu Penyesuaian Cadangan</button>
-        <button class="ai-tab flex-shrink-0" data-target="ai-simulator" data-en="Smart Match Simulator" data-ms="Simulator Padanan Pintar">Simulator Padanan Pintar</button>
-      </div>
-
-      <div class="p-7 lg:p-10 min-h-[320px]">
-        <!-- TAB 1 -->
-        <div id="ai-summary">
-          <h3 class="font-bold text-slate-900 text-lg mb-1" data-en="Generate a Tailored Executive Summary" data-ms="Jana Ringkasan Eksekutif Tersuai">Jana Ringkasan Eksekutif Tersuai</h3>
-          <p class="text-slate-500 text-sm mb-6" data-en="Select your stakeholder role to see a customized value proposition." data-ms="Pilih peranan anda untuk melihat cadangan nilai yang disesuaikan.">Pilih peranan anda untuk melihat cadangan nilai yang disesuaikan.</p>
-          <div class="flex flex-col sm:flex-row gap-3 mb-6">
-            <select id="role-select" class="flex-1 px-4 py-3 border border-slate-200 rounded-xl bg-white text-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
-            <button id="btn-summary" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm transition-colors whitespace-nowrap">
-              <span data-en="✦ Generate Summary" data-ms="✦ Jana Ringkasan">✦ Jana Ringkasan</span>
-            </button>
-          </div>
-          <div class="bg-slate-50 border border-slate-100 rounded-xl p-6 min-h-28">
-            <div id="summary-output" class="text-slate-700 text-sm leading-relaxed">
-              <em class="text-slate-400" data-en="Select a role and click generate to see the AI-tailored summary." data-ms="Pilih peranan dan klik jana untuk melihat ringkasan AI yang disesuaikan.">Pilih peranan dan klik jana untuk melihat ringkasan AI yang disesuaikan.</em>
+<section id="value" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <span class="section-label">Faedah Strategik</span>
+        <h2 class="text-3xl font-bold mb-12">Nilai Kepada Pihak Berkepentingan</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="card p-7 text-left">
+                <div class="icon-box mb-4 bg-blue-50">🏛️</div>
+                <h3 class="font-bold mb-3">DOSH & Kementerian</h3>
+                <p class="text-sm text-slate-600">Pemantauan langsung pemeriksaan & CF seluruh negara secara real-time.</p>
             </div>
-          </div>
+            <div class="card p-7 text-left">
+                <div class="icon-box mb-4 bg-teal-50">🏭</div>
+                <h3 class="font-bold mb-3">Pemilik Loji</h3>
+                <p class="text-sm text-slate-600">Kecekapan operasi yang lebih tinggi dan ketelusan dalam pemilihan PJB.</p>
+            </div>
+            <div class="card p-7 text-left">
+                <div class="icon-box mb-4 bg-orange-50">🔧</div>
+                <h3 class="font-bold mb-3">PJB & Industri</h3>
+                <p class="text-sm text-slate-600">Akses tugasan berasaskan merit dan pengurangan beban kerja pentadbiran.</p>
+            </div>
         </div>
+    </div>
+</section>
 
-        <!-- TAB 2 -->
-        <div id="ai-simulator" class="hidden">
-          <h3 class="font-bold text-slate-900 text-lg mb-1" data-en="Smart Match Engine Parsing" data-ms="Penghuraian Enjin Padanan Pintar">Penghuraian Enjin Padanan Pintar</h3>
-          <p class="text-slate-500 text-sm mb-6" data-en="Type an unstructured inspection request. The AI parses it into structured routing data." data-ms="Taip permintaan pemeriksaan tidak berstruktur. AI menghuraikannya kepada data laluan berstruktur.">Taip permintaan pemeriksaan tidak berstruktur. AI menghuraikannya kepada data laluan berstruktur.</p>
-          <div class="flex flex-col gap-3 mb-5">
-            <textarea id="sim-input" rows="3" class="w-full px-4 py-3 border border-slate-200 rounded-xl bg-white text-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-slate-400 resize-none"></textarea>
-            <button id="btn-sim" class="self-end px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl text-sm transition-colors">
-              <span data-en="✦ Simulate AI Parsing" data-ms="✦ Simulasikan Penghuraian AI">✦ Simulasikan Penghuraian AI</span>
-            </button>
-          </div>
-          <div class="terminal p-5">
-            <div class="text-slate-500 text-xs mono mb-2 border-b border-slate-800 pb-2">▶ JSON OUTPUT STREAM</div>
-            <div id="sim-output" class="text-green-400 text-xs leading-relaxed whitespace-pre-wrap min-h-24 mono"></div>
-          </div>
+<section id="operations" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12">
+      <div>
+        <h3 class="font-bold text-xl mb-8">Aliran Proses Hujung-ke-Hujung</h3>
+        <div class="relative border-l-2 border-blue-100 ml-4 space-y-8">
+            <div class="relative pl-10"><div class="step-node done">1</div><h4 class="font-bold">Permintaan</h4><p class="text-sm text-slate-500">Pemilik menghantar permohonan melalui portal.</p></div>
+            <div class="relative pl-10"><div class="step-node done">2</div><h4 class="font-bold">Padanan</h4><p class="text-sm text-slate-500">Enjin pintar menetapkan PJB berkelayakan.</p></div>
+            <div class="relative pl-10"><div class="step-node done">3</div><h4 class="font-bold">Pemeriksaan</h4><p class="text-sm text-slate-500">Dijalankan mengikut SOP digital standard.</p></div>
         </div>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-bold text-center mb-6" data-en="Fee Structure" data-ms="Struktur Fi Hipotetikal">Struktur Fi Hipotetikal</h3>
+        <div class="chart-container"><canvas id="feeChart"></canvas></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ ROADMAP ═══════ -->
-<section id="roadmap" class="py-20 lg:py-28 scroll-mt-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <span class="section-label" data-en="Way Forward" data-ms="Hala Tuju">Hala Tuju</span>
-      <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mt-2 mb-4" data-en="Strategic Roadmap" data-ms="Pelan Hala Tuju Strategik">Pelan Hala Tuju Strategik</h2>
-      <p class="text-slate-500 max-w-xl mx-auto" data-en="AG3's phased approach to accelerating DOSH's digital transformation." data-ms="Pendekatan berperingkat AG3 untuk mempercepatkan transformasi digital DOSH.">Pendekatan berperingkat AG3 untuk mempercepatkan transformasi digital DOSH.</p>
+<section id="roadmap" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-12">Pelan Hala Tuju Strategik</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="phase-card"><div class="phase-badge bg-blue-900 text-white">1</div><h4 class="font-bold mt-4">Fasa 1: Penjajaran</h4><p class="text-xs text-slate-500 mt-2">Bulan 1-2: Bengkel keperluan & integrasi sistem.</p></div>
+            <div class="phase-card"><div class="phase-badge bg-slate-400 text-white">2</div><h4 class="font-bold mt-4">Fasa 2: Perintis</h4><p class="text-xs text-slate-500 mt-2">Bulan 3-5: Pembangunan & ujian pengguna serantau.</p></div>
+            <div class="phase-card"><div class="phase-badge bg-slate-400 text-white">3</div><h4 class="font-bold mt-4">Fasa 3: Pelaksanaan</h4><p class="text-xs text-slate-500 mt-2">Bulan 6+: Pelaksanaan penuh seluruh negara.</p></div>
+        </div>
+        <div class="cta-section mt-20 p-12 text-white">
+            <h3 class="text-3xl font-bold mb-4">Bersedia Mentransformasikan Pemeriksaan Loji?</h3>
+            <p class="mb-8 opacity-80">Hubungi AG3 untuk perbincangan teknikal terperinci.</p>
+            <div class="flex flex-wrap justify-center gap-4 text-sm">
+                <span class="contact-pill">📞 +603 – 8800 7000</span>
+                <span class="contact-pill">✉️ hello@ag3.com.my</span>
+            </div>
+        </div>
     </div>
-
-    <div class="grid md:grid-cols-3 gap-6 mb-14">
-      <div class="phase-card mt-5">
-        <div class="phase-badge" style="background:var(--ag3-blue);color:white;">1</div>
-        <div class="mt-4">
-          <span class="text-xs font-bold text-blue-600 block mb-1" data-en="Months 1 – 2" data-ms="Bulan 1 – 2">Bulan 1 – 2</span>
-          <h4 class="font-bold text-slate-900 text-base mb-2" data-en="Phase 1: Alignment" data-ms="Fasa 1: Penjajaran">Fasa 1: Penjajaran</h4>
-          <p class="text-slate-500 text-xs leading-relaxed" data-en="Requirement gathering, Ministry workshops, scope agreement, and integration planning with DOSH systems." data-ms="Pengumpulan keperluan, bengkel Kementerian, persetujuan skop, dan perancangan integrasi dengan sistem DOSH.">Pengumpulan keperluan, bengkel Kementerian, persetujuan skop, dan perancangan integrasi dengan sistem DOSH.</p>
-        </div>
-      </div>
-
-      <div class="phase-card mt-5">
-        <div class="phase-badge" style="background:#94a3b8;color:white;">2</div>
-        <div class="mt-4">
-          <span class="text-xs font-bold text-slate-400 block mb-1" data-en="Months 3 – 5" data-ms="Bulan 3 – 5">Bulan 3 – 5</span>
-          <h4 class="font-bold text-slate-900 text-base mb-2" data-en="Phase 2: Pilot" data-ms="Fasa 2: Perintis">Fasa 2: Perintis</h4>
-          <p class="text-slate-500 text-xs leading-relaxed" data-en="Core platform development, select PJB onboarding, and regional pilot deployment with live user testing." data-ms="Pembangunan platform teras, pendaftaran PJB terpilih, dan pelaksanaan perintis serantau dengan ujian pengguna langsung.">Pembangunan platform teras, pendaftaran PJB terpilih, dan pelaksanaan perintis serantau dengan ujian pengguna langsung.</p>
-        </div>
-      </div>
-
-      <div class="phase-card mt-5">
-        <div class="phase-badge" style="background:#94a3b8;color:white;">3</div>
-        <div class="mt-4">
-          <span class="text-xs font-bold text-slate-400 block mb-1" data-en="Month 6 onwards" data-ms="Bulan 6 dan seterusnya">Bulan 6 dan seterusnya</span>
-          <h4 class="font-bold text-slate-900 text-base mb-2" data-en="Phase 3: Rollout" data-ms="Fasa 3: Pelaksanaan Penuh">Fasa 3: Pelaksanaan Penuh</h4>
-          <p class="text-slate-500 text-xs leading-relaxed" data-en="Nationwide rollout, full DOSH integration, analytics activation, and continuous support operations." data-ms="Pelaksanaan seluruh negara, integrasi DOSH penuh, pengaktifan analitik, dan operasi sokongan berterusan.">Pelaksanaan seluruh negara, integrasi DOSH penuh, pengaktifan analitik, dan operasi sokongan berterusan.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="cta-section p-10 lg:p-16 text-center relative">
-      <div class="relative z-10">
-        <h3 class="text-3xl lg:text-4xl font-bold text-white mb-4" data-en="Ready to Transform Plant Inspection?" data-ms="Bersedia untuk Mentransformasikan Pemeriksaan Loji?">Bersedia untuk Mentransformasikan Pemeriksaan Loji?</h3>
-        <p class="text-blue-200 mb-10 max-w-2xl mx-auto" data-en="AG3 believes a centralised digital platform is the catalyst for industrial productivity and workplace safety nationwide. We welcome a detailed technical discussion." data-ms="AG3 percaya platform digital berpusat adalah pemangkin produktiviti perindustrian dan keselamatan tempat kerja di seluruh negara. Kami mengalu-alukan perbincangan teknikal yang terperinci.">AG3 percaya platform digital berpusat adalah pemangkin produktiviti perindustrian dan keselamatan tempat kerja di seluruh negara. Kami mengalu-alukan perbincangan teknikal yang terperinci.</p>
-        <div class="flex flex-col sm:flex-row justify-center items-center gap-3 flex-wrap">
-          <div class="contact-pill">📞 +603 – 8800 7000</div>
-          <div class="contact-pill">✉️ hello@ag3.com.my</div>
-          <div class="contact-pill">🌐 www.ag3.com.my</div>
-        </div>
-        <p class="text-blue-300/60 text-xs mt-8">AG3 Sdn. Bhd. | Cyberjaya, Selangor, Malaysia</p>
-      </div>
-    </div>
-  </div>
 </section>
 
-<footer class="py-6 text-center text-xs text-slate-400" style="background:#0a0f1e;">
-  <p data-en="Proprietary & Confidential. Unauthorized copying & distribution is strictly prohibited. © 2026 AG3 Sdn. Bhd." data-ms="Hak Cipta Terpelihara & Sulit. Penyalinan & pengedaran tanpa kebenaran dilarang. © 2026 AG3 Sdn. Bhd.">Hak Cipta Terpelihara & Sulit. Penyalinan & pengedaran tanpa kebenaran dilarang. © 2026 AG3 Sdn. Bhd.</p>
+<footer class="py-6 text-center text-xs text-slate-500 bg-slate-900">
+  <p>© 2026 AG3 Sdn. Bhd. Proprietary & Confidential.</p>
 </footer>
 
 <script>
-// ── MOBILE MENU ──
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
-const menuPath = document.getElementById('menuPath');
-mobileMenuBtn.addEventListener('click', () => {
-  mobileMenu.classList.toggle('hidden');
-  menuPath.setAttribute('d', mobileMenu.classList.contains('hidden')
-    ? 'M4 6h16M4 12h16M4 18h16'
-    : 'M6 18L18 6M6 6l12 12');
-});
-document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', () => {
-  mobileMenu.classList.add('hidden');
-  menuPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-}));
+mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
-// ── LANGUAGE ──
 let currentLang = 'ms';
 let feeChart = null;
 
 function toggleLanguage() {
   currentLang = currentLang === 'ms' ? 'en' : 'ms';
   document.getElementById('desktopLangText').textContent = currentLang === 'ms' ? '🇬🇧 English' : '🇲🇾 Bahasa Melayu';
-  document.getElementById('mobileLangText').textContent = currentLang === 'ms' ? '🇬🇧 Switch to English' : '🇲🇾 Tukar ke Bahasa Melayu';
   document.querySelectorAll('[data-en]').forEach(el => { el.innerHTML = el.getAttribute('data-' + currentLang); });
-
-  // refresh active component
-  const activeBtn = document.querySelector('#component-nav button.active');
-  if (activeBtn) updateComponentDisplay(activeBtn.getAttribute('data-comp'));
-
-  // role select
-  const rs = document.getElementById('role-select');
-  rs.innerHTML = currentLang === 'en'
-    ? `<option>DOSH Director General</option><option>Ministry Finance Officer</option><option>Plant Owner / Occupier</option><option>Registered PJB Inspector</option>`
-    : `<option>Ketua Pengarah DOSH</option><option>Pegawai Kewangan Kementerian</option><option>Pemilik / Penghuni Loji</option><option>Pemeriksa PJB Berdaftar</option>`;
-
-  // textarea placeholder
-  document.getElementById('sim-input').placeholder = currentLang === 'en'
-    ? 'e.g., We have a critical high-pressure boiler at our Shah Alam facility needing urgent inspection by this Friday due to an upcoming audit.'
-    : 'cth., Kami mempunyai dandang tekanan tinggi kritikal di Shah Alam yang memerlukan pemeriksaan segera menjelang Jumaat ini kerana audit yang akan datang.';
-
   if (feeChart) {
-    feeChart.data.labels = currentLang === 'en'
-      ? ['PJB Professional Services', 'DOSH Regulatory Fee', 'AG3 Platform Admin Fee']
-      : ['Perkhidmatan Profesional PJB', 'Fi Kawal Selia DOSH', 'Fi Pentadbiran Platform AG3'];
+    feeChart.data.labels = currentLang === 'en' ? ['PJB Services', 'DOSH Fee', 'AG3 Admin Fee'] : ['PJB Services', 'Fi DOSH', 'Fi AG3'];
     feeChart.update();
   }
 }
 
-// ── COMPONENT DATA ──
 const componentData = {
-  c1: {
-    icon:'⏱', color:'rgba(37,99,235,0.1)', accent:'#2563eb',
-    en:{ title:'Smart Scheduling Engine', points:['Intelligent PJB matching by competency & location','Geo-based assignment & priority queuing','Automated conflict detection & resolution','Real-time availability sync'], goal:'Minimise delays and optimise inspection capacity.' },
-    ms:{ title:'Enjin Penjadualan Pintar', points:['Padanan PJB pintar berdasarkan kompetensi & lokasi','Penugasan berasaskan geo & baris gilir keutamaan','Pengesanan & penyelesaian konflik automatik','Penyegerakan ketersediaan masa nyata'], goal:'Mengurangkan kelewatan dan mengoptimumkan kapasiti pemeriksaan.' }
-  },
-  c2: {
-    icon:'👤', color:'rgba(5,150,105,0.1)', accent:'#059669',
-    en:{ title:'PJB Registry & Competency', points:['Central qualifications & experience repository','Continuous performance tracking per inspector','Transparent access & fair assignment for PJBs','Credential verification & renewal alerts'], goal:'Ensure only compliant, qualified PJBs perform inspections.' },
-    ms:{ title:'Pendaftaran & Kompetensi PJB', points:['Repositori pusat kelayakan & pengalaman','Penjejakan prestasi berterusan setiap pemeriksa','Akses telus & penugasan adil untuk PJB','Pengesahan kelayakan & makluman pembaharuan'], goal:'Memastikan hanya PJB yang berkelayakan dan mematuhi syarat melakukan pemeriksaan.' }
-  },
-  c3: {
-    icon:'⚙️', color:'rgba(124,58,237,0.1)', accent:'#7c3aed',
-    en:{ title:'Inspection Workflow & QA', points:['Standardised digital assessment modules (DOSH SOP)','Digital report submission & CF applications','Integrated fee payments (FPX / online banking)','Built-in quality assurance checkpoints'], goal:'Consistent, auditable inspection outcomes nationwide.' },
-    ms:{ title:'Aliran Kerja Pemeriksaan & QA', points:['Modul penilaian digital standard (SOP DOSH)','Penyerahan laporan digital & permohonan CF','Pembayaran fi bersepadu (FPX / perbankan dalam talian)','Pusat pemeriksaan jaminan kualiti terbina'], goal:'Hasil pemeriksaan yang konsisten dan boleh diaudit di seluruh negara.' }
-  },
-  c4: {
-    icon:'📊', color:'rgba(217,119,6,0.1)', accent:'#d97706',
-    en:{ title:'Monitoring Dashboards', points:['Live inspection demand & throughput view','Automated non-compliance alerts & escalation','Exportable policy analytics for Ministry briefs','Predictive resource planning by state & sector'], goal:'Data-driven proactive regulatory enforcement.' },
-    ms:{ title:'Papan Pemuka Pemantauan', points:['Pandangan langsung permintaan & pemprosesan pemeriksaan','Makluman ketidakpatuhan automatik & eskalasi','Analitik dasar yang boleh dieksport untuk taklimat Kementerian','Perancangan sumber ramalan mengikut negeri & sektor'], goal:'Penguatkuasaan kawal selia proaktif berasaskan data.' }
-  },
-  c5: {
-    icon:'💾', color:'rgba(220,38,38,0.1)', accent:'#dc2626',
-    en:{ title:'Digital Records Registry', points:['Tamper-evident repository for all inspection reports','Verifiable access for plant owners & insurers','Secure long-term regulatory data retention','Blockchain-ready integrity verification'], goal:'Single source of truth for national plant compliance.' },
-    ms:{ title:'Pendaftaran Rekod Digital', points:['Repositori kalis gangguan untuk semua laporan pemeriksaan','Akses boleh disahkan untuk pemilik loji & syarikat insurans','Penyimpanan data kawal selia jangka panjang yang selamat','Pengesahan integriti sedia blockchain'], goal:'Sumber kebenaran tunggal untuk pematuhan loji nasional.' }
-  },
-  c6: {
-    icon:'🔍', color:'rgba(100,116,139,0.1)', accent:'#475569',
-    en:{ title:'Internal Quality Audit', points:['Rigorous peer-review modules','System-driven anomaly detection','Standardised technical oversight logs','Ministry-level quality benchmarks'], goal:'Maintain the highest standards of safety nationwide.' },
-    ms:{ title:'Audit Kualiti Dalaman', points:['Modul semakan rakan sebaya yang ketat','Pengesanan anomali berpacukan sistem','Log pemantauan teknikal standard','Penanda aras kualiti peringkat Kementerian'], goal:'Mengekalkan piawaian keselamatan tertinggi di seluruh negara.' }
-  }
+  c1: { ms:{title:'Penjadualan Pintar', points:['Padanan PJB pintar','Penugasan geo-lokasi']}, en:{title:'Smart Scheduling', points:['Intelligent matching','Geo-location assignment']} },
+  c2: { ms:{title:'Pendaftaran PJB', points:['Repositori kelayakan','Penjejakan prestasi']}, en:{title:'PJB Registry', points:['Qualification repo','Performance tracking']} },
+  c3: { ms:{title:'Aliran Kerja', points:['SOP Digital','Pembayaran FPX']}, en:{title:'Workflow', points:['Digital SOP','FPX Payment']} },
+  c4: { ms:{title:'Analitik', points:['Papan pemuka langsung']}, en:{title:'Analytics', points:['Live Dashboard']} },
+  c5: { ms:{title:'Rekod Digital', points:['Kalis gangguan','Blockchain-ready']}, en:{title:'Digital Records', points:['Tamper-evident','Blockchain-ready']} },
+  c6: { ms:{title:'Audit Kualiti', points:['Semakan rakan sebaya']}, en:{title:'Quality Audit', points:['Peer review']} }
 };
 
 function updateComponentDisplay(key) {
-  const d = componentData[key];
-  const lang = d[currentLang];
-  document.getElementById('component-display').innerHTML = `
-    <div class="w-full">
-      <div class="flex items-center gap-4 mb-6">
-        <div style="width:56px;height:56px;border-radius:14px;background:${d.color};display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;">${d.icon}</div>
-        <h3 style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:#0f172a;">${lang.title}</h3>
-      </div>
-      <ul style="space-y:0;margin-bottom:24px;">
-        ${lang.points.map(p => `<li style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid rgba(26,61,143,0.06);">
-          <span style="width:20px;height:20px;border-radius:50%;background:${d.color};color:${d.accent};display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:2px;font-weight:700;">✓</span>
-          <span style="font-size:14px;color:#374151;">${p}</span>
-        </li>`).join('')}
-      </ul>
-      <div style="background:rgba(37,99,235,0.05);border-left:3px solid ${d.accent};border-radius:0 10px 10px 0;padding:14px 16px;">
-        <span style="font-size:12px;font-weight:700;color:${d.accent};text-transform:uppercase;letter-spacing:0.06em;">Goal</span>
-        <p style="font-size:14px;color:#374151;margin-top:4px;">${lang.goal}</p>
-      </div>
-    </div>`;
+  const d = componentData[key][currentLang];
+  document.getElementById('component-display').innerHTML = `<h3 class="text-2xl font-bold mb-4">${d.title}</h3><ul class="list-disc pl-5">${d.points.map(p => `<li class="mb-2">${p}</li>`).join('')}</ul>`;
 }
 
-const compBtns = document.querySelectorAll('#component-nav button');
-compBtns.forEach(btn => btn.addEventListener('click', () => {
-  compBtns.forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  updateComponentDisplay(btn.getAttribute('data-comp'));
+document.querySelectorAll('.comp-tab').forEach(btn => btn.addEventListener('click', (e) => {
+  document.querySelectorAll('.comp-tab').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  updateComponentDisplay(e.target.getAttribute('data-comp'));
 }));
-updateComponentDisplay('c1');
 
-// ── STEPPER ──
-function highlightStep(idx) {
-  document.querySelectorAll('.step-node').forEach((n, i) => {
-    n.className = `step-node ${i <= idx ? 'done' : 'idle'}`;
-    n.style.cssText = 'left:-18px;top:0;position:absolute;box-shadow:0 0 0 4px white;';
-  });
-}
-
-// ── AI TABS ──
-document.querySelectorAll('#ai-tabs button').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('#ai-tabs button').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    ['ai-summary','ai-simulator'].forEach(id => document.getElementById(id).classList.add('hidden'));
-    document.getElementById(tab.getAttribute('data-target')).classList.remove('hidden');
-  });
-});
-
-// ── INIT ──
-document.getElementById('role-select').innerHTML = `
-  <option>Ketua Pengarah DOSH</option>
-  <option>Pegawai Kewangan Kementerian</option>
-  <option>Pemilik / Penghuni Loji</option>
-  <option>Pemeriksa PJB Berdaftar</option>`;
-document.getElementById('sim-output').textContent = '// Menunggu input pengguna untuk mensimulasikan logik laluan...';
-document.getElementById('sim-input').placeholder = 'cth., Kami mempunyai dandang tekanan tinggi kritikal di Shah Alam yang memerlukan pemeriksaan segera menjelang Jumaat ini kerana audit yang akan datang.';
-
-// ── GEMINI AI ──
-const apiKey = ""; 
-
-async function callGemini(systemPrompt, userPrompt, isJson = false) {
-  const payload = {
-    systemInstruction: { parts: [{ text: systemPrompt }] },
-    contents: [{ parts: [{ text: userPrompt }] }]
-  };
-  
-  if (isJson) {
-    payload.generationConfig = { responseMimeType: "application/json" };
-  }
-
-  let retries = 3;
-  let delay = 1000;
-  
-  while (retries > 0) {
-    try {
-      const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      if (!resp.ok) throw new Error('Ralat API ' + resp.status);
-      const data = await resp.json();
-      return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-    } catch (e) {
-      console.error("Ralat Gemini API:", e);
-      retries--;
-      if (retries === 0) throw e;
-      await new Promise(r => setTimeout(r, delay));
-      delay *= 2;
-    }
-  }
-}
-
-document.getElementById('btn-summary').addEventListener('click', async () => {
-  const role = document.getElementById('role-select').value;
-  const el = document.getElementById('summary-output');
-  const loadMsg = currentLang === 'en' ? `Analysing context for ${role}...` : `Menganalisis konteks untuk ${role}...`;
-  el.innerHTML = `<span class="text-blue-500 animate-pulse">${loadMsg}</span>`;
-  try {
-    const lang = currentLang === 'en' ? 'English' : 'Bahasa Melayu (Malay)';
-    const text = await callGemini(
-      `You are presenting AG3's plant inspection digital platform proposal. Write concise, professional executive summaries in ${lang}. Mention Malaysia MADANI and high integrity.`,
-      `Write a 2-paragraph persuasive executive summary in ${lang} highlighting the specific value of the AG3 platform for: ${role}. No markdown formatting.`
-    );
-    el.innerHTML = `<div class="text-sm leading-relaxed">${text.replace(/\n\n/g, '</div><div class="mt-3 text-sm leading-relaxed">')}</div>`;
-  } catch(e) {
-    el.innerHTML = `<span class="text-red-500 text-sm">Error: ${e.message}</span>`;
-  }
-});
-
-document.getElementById('btn-sim').addEventListener('click', async () => {
-  const input = document.getElementById('sim-input').value.trim();
-  const out = document.getElementById('sim-output');
-  if (!input) { out.textContent = '// Error: Please enter a request first.'; return; }
-  out.textContent = currentLang === 'en' ? '// Parsing natural language → routing JSON...' : '// Menghuraikan bahasa semula jadi → JSON laluan...';
-  try {
-    const valLang = currentLang === 'en' ? 'English' : 'Bahasa Melayu';
-    const text = await callGemini(
-      'You are the AI routing engine for AG3 plant inspection platform. Return ONLY valid JSON.',
-      `Parse this request in ${valLang}:\nRequest: "${input}"\nSchema: { "plant_type_identified": "string", "location_extracted": "string", "urgency_level": "string", "estimated_pjb_assignment_time": "string", "system_action": "string" }`,
-      true
-    );
-    const cleaned = text.replace(/```json|```/g, '').trim();
-    out.textContent = JSON.stringify(JSON.parse(cleaned), null, 2);
-  } catch(e) {
-    out.textContent = `// Error: ${e.message}`;
-  }
-});
-
-// ── CHART ──
 window.addEventListener('DOMContentLoaded', () => {
+  updateComponentDisplay('c1');
   const ctx = document.getElementById('feeChart').getContext('2d');
   feeChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: ['Perkhidmatan Profesional PJB', 'Fi Kawal Selia DOSH', 'Fi Pentadbiran Platform AG3'],
-      datasets: [{
-        data: [75, 15, 10],
-        backgroundColor: ['#1a3d8f', '#3b82f6', '#f59e0b'],
-        borderWidth: 0, hoverOffset: 6
-      }]
+      labels: ['PJB Services', 'Fi DOSH', 'Fi AG3'],
+      datasets: [{ data: [75, 15, 10], backgroundColor: ['#1a3d8f', '#3b82f6', '#f59e0b'], borderWidth: 0 }]
     },
-    options: {
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { position: 'bottom', labels: { padding: 16, font: { family: "'DM Sans', sans-serif", size: 11 }, boxWidth: 14, boxHeight: 14 } }
-      },
-      cutout: '68%'
-    }
+    options: { maintainAspectRatio: false }
   });
 });
 </script>
