@@ -665,7 +665,47 @@
 </section>
 
 <!-- ═══════ AI DEMO ═══════ -->
+<!-- ═══════ AI DEMO ═══════ -->
+<section id="ai-demo" class="py-20 lg:py-28 scroll-mt-16" style="background:linear-gradient(180deg,#f8faff 0%,white 100%);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="ai-hero p-8 lg:p-14 mb-10 relative">
+      <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 70% 30%,rgba(59,130,246,0.12) 0%,transparent 60%);pointer-events:none;border-radius:20px;"></div>
+      <div class="relative z-10 max-w-2xl">
+        <span class="tag-pill mb-4">✦ Powered by Gemini AI</span>
+        <h2 class="text-3xl lg:text-4xl font-bold text-white mt-4 mb-4" data-en="Interactive AI Capabilities" data-ms="Keupayaan AI Interaktif">Keupayaan AI Interaktif</h2>
+        <p class="text-blue-200 text-base leading-relaxed" data-en="Experience how the AG3 platform leverages advanced Language Models to streamline administrative workflows and intelligently process inspection requests." data-ms="Alami bagaimana platform AG3 memanfaatkan Model Bahasa Lanjutan untuk menyelaraskan aliran kerja pentadbiran dan memproses permintaan pemeriksaan secara pintar.">Alami bagaimana platform AG3 memanfaatkan Model Bahasa Lanjutan untuk menyelaraskan aliran kerja pentadbiran dan memproses permintaan pemeriksaan secara pintar.</p>
+      </div>
+    </div>
 
+    <div class="card overflow-hidden">
+      <!-- TABS -->
+      <div class="flex border-b border-slate-100 bg-slate-50/60 overflow-x-auto scrollbar-hide" id="ai-tabs">
+        <button class="ai-tab active flex-shrink-0" data-target="ai-summary" data-en="Proposal Tailoring Assistant" data-ms="Pembantu Penyesuaian Cadangan">Pembantu Penyesuaian Cadangan</button>
+        <button class="ai-tab flex-shrink-0" data-target="ai-simulator" data-en="Smart Match Simulator" data-ms="Simulator Padanan Pintar">Simulator Padanan Pintar</button>
+      </div>
+
+      <div class="p-7 lg:p-10 min-h-[320px]">
+        <!-- TAB 1 -->
+
+        <!-- TAB 2 -->
+        <div id="ai-simulator" class="hidden">
+          <h3 class="font-bold text-slate-900 text-lg mb-1" data-en="Smart Match Engine Parsing" data-ms="Penghuraian Enjin Padanan Pintar">Penghuraian Enjin Padanan Pintar</h3>
+          <p class="text-slate-500 text-sm mb-6" data-en="Type an unstructured inspection request. The AI parses it into structured routing data." data-ms="Taip permintaan pemeriksaan tidak berstruktur. AI menghuraikannya kepada data laluan berstruktur.">Taip permintaan pemeriksaan tidak berstruktur. AI menghuraikannya kepada data laluan berstruktur.</p>
+          <div class="flex flex-col gap-3 mb-5">
+            <textarea id="sim-input" rows="3" class="w-full px-4 py-3 border border-slate-200 rounded-xl bg-white text-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-slate-400 resize-none"></textarea>
+            <button id="btn-sim" class="self-end px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl text-sm transition-colors">
+              <span data-en="✦ Simulate AI Parsing" data-ms="✦ Simulasikan Penghuraian AI">✦ Simulasikan Penghuraian AI</span>
+            </button>
+          </div>
+          <div class="terminal p-5">
+            <div class="text-slate-500 text-xs mono mb-2 border-b border-slate-800 pb-2">▶ JSON OUTPUT STREAM</div>
+            <div id="sim-output" class="text-green-400 text-xs leading-relaxed whitespace-pre-wrap min-h-24 mono"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ═══════ ROADMAP ═══════ -->
 <section id="roadmap" class="py-20 lg:py-28 scroll-mt-16">
