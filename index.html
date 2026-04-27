@@ -6,7 +6,7 @@
 <title>AG3 | Platform Digital Berpusat</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">/
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -504,22 +504,22 @@
       <!-- TABS -->
       <div class="w-full lg:w-72 flex flex-row lg:flex-col gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-hide" id="component-nav">
         <button class="comp-tab active" data-comp="c1">
-          <span>⏱</span><span data-en="1. Smart Scheduling" data-ms="1. Penjadualan Pintar">Penjadualan Pintar</span>
+          <span>⏱</span><span data-en="Smart Scheduling" data-ms="1. Penjadualan Pintar">Penjadualan Pintar</span>
         </button>
         <button class="comp-tab" data-comp="c2">
-          <span>👤</span><span data-en="2. PJB Registry" data-ms="2. Pendaftaran PJB">Pendaftaran PJB</span>
+          <span>👤</span><span data-en="PJB Registry" data-ms="2. Pendaftaran PJB">Pendaftaran PJB</span>
         </button>
         <button class="comp-tab" data-comp="c3">
-          <span>⚙️</span><span data-en="3. Inspection Workflow" data-ms="3. Aliran Kerja">Aliran Kerja</span>
+          <span>⚙️</span><span data-en="Inspection Workflow" data-ms="3. Aliran Kerja">Aliran Kerja</span>
         </button>
         <button class="comp-tab" data-comp="c4">
-          <span>📊</span><span data-en="4. Monitoring Dashboard" data-ms="4. Papan Pemuka">Papan Pemuka</span>
+          <span>📊</span><span data-en="Monitoring Dashboard" data-ms="4. Papan Pemuka">Papan Pemuka</span>
         </button>
         <button class="comp-tab" data-comp="c5">
-          <span>💾</span><span data-en="5. Digital Registry" data-ms="5. Pendaftaran Digital">Pendaftaran Digital</span>
+          <span>💾</span><span data-en="Digital Registry" data-ms="5. Pendaftaran Digital">Pendaftaran Digital</span>
         </button>
         <button class="comp-tab" data-comp="c6">
-          <span>🔍</span><span data-en="6. Quality Audit" data-ms="6. Audit Kualiti">Audit Kualiti</span>
+          <span>🔍</span><span data-en="Quality Audit" data-ms="6. Audit Kualiti">Audit Kualiti</span>
         </button>
       </div>
 
@@ -959,7 +959,7 @@ async function callGemini(systemPrompt, userPrompt, isJson = false) {
   
   while (retries > 0) {
     try {
-      const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+      const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
