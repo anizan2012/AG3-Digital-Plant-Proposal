@@ -661,6 +661,28 @@
         </div>
       </div>
     </div>
+
+    <!-- GOVERNANCE BANNER -->
+    <div class="rounded-2xl p-8" style="background:linear-gradient(135deg,#0a0f1e 0%,#1a3d8f 100%);">
+      <h3 class="text-white font-bold text-xl mb-2 flex items-center gap-2">
+        ⚖️ <span data-en="Compliance & Collaboration Framework" data-ms="Rangka Kerja Pematuhan & Kolaborasi">Rangka Kerja Pematuhan & Kolaborasi</span>
+      </h3>
+      <p class="text-slate-300 text-sm mb-8" data-en="A complement to—not a substitute for—the Government's regulatory authority." data-ms="Pelengkap kepada—bukan pengganti—pihak berkuasa kawal selia Kerajaan.">Pelengkap kepada—bukan pengganti—pihak berkuasa kawal selia Kerajaan.</p>
+      <div class="grid sm:grid-cols-3 gap-6">
+        <div class="border-l-2 border-blue-400 pl-4">
+          <strong class="text-blue-300 block mb-1 text-sm" data-en="Regulator-First Governance" data-ms="Tadbir Urus Pengawal Selia">Tadbir Urus Pengawal Selia</strong>
+          <span class="text-slate-400 text-xs" data-en="DOSH retains system ownership. Ministry provides policy direction." data-ms="DOSH mengekalkan pemilikan sistem. Kementerian menyediakan hala tuju dasar.">DOSH mengekalkan pemilikan sistem. Kementerian menyediakan hala tuju dasar.</span>
+        </div>
+        <div class="border-l-2 border-yellow-400 pl-4">
+          <strong class="text-yellow-300 block mb-1 text-sm" data-en="Legal Alignment" data-ms="Penjajaran Undang-undang">Penjajaran Undang-undang</strong>
+          <span class="text-slate-400 text-xs" data-en="Full compliance with OSH Act, data protection, and public procurement requirements." data-ms="Pematuhan penuh dengan Akta KKP, perlindungan data, dan keperluan perolehan awam.">Pematuhan penuh dengan Akta KKP, perlindungan data, dan keperluan perolehan awam.</span>
+        </div>
+        <div class="border-l-2 border-green-400 pl-4">
+          <strong class="text-green-300 block mb-1 text-sm" data-en="Full Transparency" data-ms="Ketelusan Penuh">Ketelusan Penuh</strong>
+          <span class="text-slate-400 text-xs" data-en="Independent audits, whistleblower channels, and real-time dashboard alerts." data-ms="Audit bebas, saluran pemberi maklumat, dan makluman papan pemuka masa nyata.">Audit bebas, saluran pemberi maklumat, dan makluman papan pemuka masa nyata.</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -679,12 +701,27 @@
     <div class="card overflow-hidden">
       <!-- TABS -->
       <div class="flex border-b border-slate-100 bg-slate-50/60 overflow-x-auto scrollbar-hide" id="ai-tabs">
+        <button class="ai-tab active flex-shrink-0" data-target="ai-summary" data-en="Proposal Tailoring Assistant" data-ms="Pembantu Penyesuaian Cadangan">Pembantu Penyesuaian Cadangan</button>
         <button class="ai-tab flex-shrink-0" data-target="ai-simulator" data-en="Smart Match Simulator" data-ms="Simulator Padanan Pintar">Simulator Padanan Pintar</button>
       </div>
 
       <div class="p-7 lg:p-10 min-h-[320px]">
         <!-- TAB 1 -->
-
+        <div id="ai-summary">
+          <h3 class="font-bold text-slate-900 text-lg mb-1" data-en="Generate a Tailored Executive Summary" data-ms="Jana Ringkasan Eksekutif Tersuai">Jana Ringkasan Eksekutif Tersuai</h3>
+          <p class="text-slate-500 text-sm mb-6" data-en="Select your stakeholder role to see a customized value proposition." data-ms="Pilih peranan anda untuk melihat cadangan nilai yang disesuaikan.">Pilih peranan anda untuk melihat cadangan nilai yang disesuaikan.</p>
+          <div class="flex flex-col sm:flex-row gap-3 mb-6">
+            <select id="role-select" class="flex-1 px-4 py-3 border border-slate-200 rounded-xl bg-white text-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
+            <button id="btn-summary" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm transition-colors whitespace-nowrap">
+              <span data-en="✦ Generate Summary" data-ms="✦ Jana Ringkasan">✦ Jana Ringkasan</span>
+            </button>
+          </div>
+          <div class="bg-slate-50 border border-slate-100 rounded-xl p-6 min-h-28">
+            <div id="summary-output" class="text-slate-700 text-sm leading-relaxed">
+              <em class="text-slate-400" data-en="Select a role and click generate to see the AI-tailored summary." data-ms="Pilih peranan dan klik jana untuk melihat ringkasan AI yang disesuaikan.">Pilih peranan dan klik jana untuk melihat ringkasan AI yang disesuaikan.</em>
+            </div>
+          </div>
+        </div>
 
         <!-- TAB 2 -->
         <div id="ai-simulator" class="hidden">
@@ -965,8 +1002,8 @@ document.getElementById('btn-sim').addEventListener('click', async () => {
   try {
     const valLang = currentLang === 'en' ? 'English' : 'Bahasa Melayu';
     const text = await callGemini(
-      'You are the AI routing engine for AG3 plant inspection platform. Return ONLY valid JSON.',
-      `Parse this request in ${valLang}:\nRequest: "${input}"\nSchema: { "plant_type_identified": "string", "location_extracted": "string", "urgency_level": "string", "estimated_pjb_assignment_time": "string", "system_action": "string" }`,
+      'You are the AI routing engine for AG3 plant inspection platform. Return ONLY valid JSON, no other text.',
+      `Parse this inspection request and return ONLY a valid JSON object with all values in ${valLang}:\nRequest: "${input}"\nSchema: { "plant_type_identified": "string", "location_extracted": "string", "urgency_level": "string (Low/Medium/High/Critical)", "required_inspector_competency": "string", "estimated_pjb_assignment_time": "string", "system_action": "string (1 sentence description)" }`,
       true
     );
     const cleaned = text.replace(/```json|```/g, '').trim();
